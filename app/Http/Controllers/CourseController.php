@@ -129,4 +129,8 @@ class CourseController extends Controller
     {
         $course->delete();
     }
+    public function refreshCourse(){
+                $a = Course::all();
+                  return view('coursetable',['courses'=>$a]);
+    }
 }

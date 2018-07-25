@@ -55,7 +55,7 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-
+Route::get('refreshcourse','CourseController@refreshCourse');
 Route::get('error',function(){
 	
 	echo "<script> alert('admin') </script>";

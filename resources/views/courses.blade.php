@@ -176,6 +176,7 @@
     data: { course:course, duration:duration ,academic_year:academic_year,semester:semester},
     success: function (data) {
        $("#result").html(data);
+       refreshCourse();
        alert("THANK U FOR REGISTERED COURSE !!!");
     },
     error: function (data) {
@@ -186,6 +187,8 @@
 
     });
 });
+  function afterRefresh(){
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -218,7 +221,9 @@ $('#update').on('click',function(e){
         data: {name,duration,semester},
         dataType: 'json',
         success: function(data){
-             alert(data);
+             // alert(data);
+             $("#myModal").modal('hide');
+            refreshCourse();
             console.log(data);
 
         },
@@ -241,18 +246,32 @@ $('#update').on('click',function(e){
       url:'/courses/'+$(this).data('id'),
       type:'DELETE',
       success: function(data){
-             alert(data);
+             // alert(data);
             console.log(data);
-
+            refreshCourse();
         },
        error: function(data){
             console.log(data);
         
         }
     });
-  })
-
+  });
+  }
+  function refreshCourse(){
+    $.ajax({
+      type: "GET",
+      url: "{{url('/refreshcourse')}}",
+      success: function (data) {
+         $("#result").html(data);
+          afterRefresh();   
+      },
+      error: function (data) {
+          console.log(data);
+      },
+    });
+  }
   //.delete button
+  afterRefresh()
  </script>
 
 @endsection
