@@ -24,7 +24,7 @@
   <!-- Custom styles -->
   <link href="{{ url('front/css/style.css') }}" rel="stylesheet">
   <link href="{{ url('front/css/style-responsive.css') }}" rel="stylesheet" />
-
+ 
     <style type="text/css">
 #image-preview,#image-preview1,#image-preview2{
   width: 200px;

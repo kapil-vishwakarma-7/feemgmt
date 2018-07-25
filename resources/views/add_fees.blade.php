@@ -63,7 +63,7 @@
 						
 								<div class="table-responsive">
 
-								 <table class="table table-hover table-striped">
+								 <table class="table table-hover table-bordered">
     <thead>
       <tr>
         <th width="5%">#</th>

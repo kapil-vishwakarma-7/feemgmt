@@ -11,7 +11,7 @@
 </div>
     </section>
   </section>
-  </footer]>
+  </footer>
   </section>
   <!-- container section end -->
 

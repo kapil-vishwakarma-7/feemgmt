@@ -13,11 +13,16 @@
             </ol>
           </div>
         </div>       
+        <section class="panel">
+                <header class="panel-heading">
+                  Enquiry
+                </header>
+                <div class="panel-body">
         <div class="table-responsive"> 
   <table class="table table-bordered table-hover content">
     <thead>
       <tr>
-        <th class="bg-info">S.no</th>
+        <th class="info">S.no</th>
         <th class="info">Name</th>
         <th class="info">Email</th>
         <th class="info">Course</th>
@@ -40,6 +45,9 @@
     </tbody>
   </table>
   </div>
+</div>
+</section>
+</section>
   {{ $enquiries->links() }}
 <script type="text/javascript">
   $(document).on('click','.pagination a',function(e){

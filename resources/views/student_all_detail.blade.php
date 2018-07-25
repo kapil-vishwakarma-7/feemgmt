@@ -23,7 +23,7 @@
                 <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{url('/uploads/'.$student->image)}}" class="img-circle img-responsive"> </div>
             
                 <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-user-information">
+                  <table class="table  table-user-information">
                     <tbody>
                       <tr>
                         <td><b>Name:</b></td>

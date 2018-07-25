@@ -13,12 +13,12 @@
               <table class="table table-hover">
                 <tbody>
                 	<tr>
-                	<th>Semester</th>
-                	<th>Total Amount</th>
+                	<th class="info">Semester</th>
+                	<th class="info">Total Amount</th>
 
-                	<th>Paid Amount</th>
-                	                	<th>Due Amount</th>
-                      <th>Print</th>
+                	<th class="info">Paid Amount</th>
+                	                	<th class="info">Due Amount</th>
+                      <th class="info">Print</th>
                   </tr>
                   @foreach($student->course->semesters as $e)
                    <tr>
@@ -47,7 +47,7 @@
                 </div>
               </div>
               <div class="table-responsive">
-              <table class="table table-hover">
+              <table class="table table-bordered table-hover">
                 <tbody> 
                   	<tr>
                     	<th>#</th>

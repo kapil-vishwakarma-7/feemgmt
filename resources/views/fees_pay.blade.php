@@ -39,11 +39,11 @@
                 <tbody>
                   <tr>
                 
-                     <th>Semester</th>
-                        <th>Total Fees</th>
-                        <th>Fees Due</th>
-                        <th>Discount</th>
-                        <th>After Discount</th>
+                     <th class="info">Semester</th>
+                        <th class="info">Total Fees</th>
+                        <th class="info" >Fees Due</th>
+                        <th class="info" >Discount</th>
+                        <th class="info">After Discount</th>
                       </tr>
                      
                   
