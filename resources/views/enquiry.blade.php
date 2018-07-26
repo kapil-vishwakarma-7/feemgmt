@@ -15,7 +15,7 @@
         </div>
         <!-- Form validations -->
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-6 col-lg-offset-3">
             <section class="panel">
               <header class="panel-heading">
                 Enquiry Form
@@ -102,8 +102,4 @@
     });
 
 </script>
-
-</body>
-
-</html>
 @endsection
