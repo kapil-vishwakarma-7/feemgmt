@@ -2193,16 +2193,21 @@ div[data-role="editor-toolbar"] {
 */
 .menu-box:hover {
     color: #ffffff;
-    border-bottom: 0px solid #3377ec;
+    border-bottom: 4px solid #ffffff;
     background-color: #3377ec;
 }
 .info-box:hover i{
     color: #ffffff;
-    border-bottom: 0px solid #3377ec;
+    border-bottom: 4px solid #ffffff;
     background-color: #3377ec;
 }
 
 
+.table thead > tr > th {
+    vertical-align: bottom;
+   color: #54667a;
+     border-bottom: 0px solid #dddddd; 
+}
     
 
 
