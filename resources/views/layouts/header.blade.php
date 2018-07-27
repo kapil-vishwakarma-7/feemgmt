@@ -291,7 +291,7 @@
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                {{-- <img alt="" src="{{ url('front/img/avatar1_small.jpg') }}"> --}}
+                                 <img alt="" src="{{ url('front/img/user.png') }}"> 
                             </span>
                             <span class="username">{{Auth::user()->name}}</span>
                             <b class="caret"></b>

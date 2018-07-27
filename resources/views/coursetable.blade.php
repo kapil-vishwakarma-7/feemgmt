@@ -1,5 +1,11 @@
+                
 <div  id="result">
   <div class="col-md-6">
+       <section class="panel">
+              <div class="panel-heading">
+                <h2><i class="fa fa-flag-o red"></i><strong>Statistics</strong></h2>
+           </div>
+            <div class="panel-body">
          <table class="table table-striped">
           <thead>
             <tr>
@@ -30,6 +36,8 @@
            @endforeach
           </tbody>
         </table>
+           </div>
+           </section>
   </div>
 </div>
  
