@@ -17,7 +17,7 @@
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <a href="admission">
-            <div class="info-box blue-bg">
+            <div class="info-box menu-box">
               <i class="fa fa-university"></i>
               <div class="count">New</div>
               <div class="title">admission</div>
@@ -26,10 +26,9 @@
             <!--/.info-box-->
           </div>
           <!--/.col-->
-
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <a href="enquiry">
-            <div class="info-box brown-bg">
+            <div class="info-box menu-box">
               <i class="fa fa-edit"></i>
               <div class="count">New</div>
               <div class="title">Enquiry</div>
@@ -37,12 +36,10 @@
             </a>
             <!--/.info-box-->
           </div>
-        
           <!--/.col-->
-
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <a href="courses">
-            <div class="info-box pink-bg">
+            <div class="info-box menu-box">
               <i class="fa fa-book"></i>
               <div class="count">Add</div>
               <div class="title">Courses</div>
@@ -54,7 +51,7 @@
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <a href="{{ url('/admission/create') }}">
-            <div class="info-box green-bg">
+            <div class="info-box menu-box">
               <i class="fa fa-users"></i>
               <div class="count">our</div>
               <div class="title">Students</div>
@@ -69,7 +66,7 @@
        <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <a href="{{ url('feesmaster') }}">
-            <div class="info-box red-bg">
+            <div class="info-box menu-box">
               <i class="fa fa-inr"></i>
               <div class="count">Fee</div>
               <div class="title">Master</div>
@@ -81,7 +78,7 @@
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <a href="{{ url('feespay') }}">
-            <div class="info-box yellow-bg">
+            <div class="info-box menu-box">
               <i class="fa fa-edit"></i>
               <div class="count">Pay </div>
               <div class="title">Fee</div>
@@ -92,10 +89,11 @@
         
           <!--/.col-->
 
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
             <a href="courses">
-            <div class="info-box blue-bg">
-              <i class="fa fa-book"></i>
+            <div class="info-box menu-box">
+             <i class="fa fa-book .me"></i>
+          
               <div class="count">Our</div>
               <div class="title">Courses</div>
             </div>
@@ -104,9 +102,22 @@
           </div>
           <!--/.col-->
 
-         {{--  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    
+               <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+            <a href="courses">
+            <div class="info-box menu-box">
+             <i class="fa fa-users .me"></i>
+          
+              <div class="count">Our</div>
+              <div class="title">Team</div>
+            </div>
+            </a>
+            <!--/.info-box-->
+          </div>
+           
+           {{--  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <a href="">
-            <div class="info-box green-bg">
+            <div class="info-box menu-box">
               <i class="fa fa-users"></i>
               <div class="count">Our</div>
               <div class="title">Student</div>
@@ -117,17 +128,6 @@
           <!--/.col-->
 
         </div>
-
-       
-
-
-  
-
-
-        
-
-
-
 
         <!-- project team & activity start -->
         <div class="row">

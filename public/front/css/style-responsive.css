@@ -51,7 +51,9 @@
         text-align: left;
     }
     #sidebar > ul > li > a i{
-        /*display: none !important;*/
+       
+            color: #54667a;
+
     }
 
     .mail-info, .mail-info:hover {

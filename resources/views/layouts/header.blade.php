@@ -63,6 +63,8 @@
 }
  .error {
    color: red;
+        }
+       
 </style>
 
 </head>
@@ -77,20 +79,11 @@
       </div>
 
       <!--logo start-->
-      <a href="/" class="logo">MCRPV <span class="lite">Admin</span></a>
+     <!-- <a href="/" class="logo">MCRPV <span class="lite">Admin</span></a>-->
+        <a href="/" class="logo"><img src="{{url('front/img/mculogo.png')}}" height="60" width="60" ></a>
       <!--logo end-->
 
-        <div class="nav search-row" id="top_menu">
-        <!--  search form start -->
-        <ul class="nav top-menu">
-          <li>
-            <form class="navbar-form">
-              <input class="form-control" placeholder="Search" type="text">
-            </form>
-          </li>
-        </ul>
-        <!--  search form end -->
-      </div>
+       
 
       <div class="top-nav notification-row">
         <!-- notificatoin dropdown start-->
@@ -336,8 +329,8 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
-          <li class="active">
-            <a class="" href="/">
+          <li >
+            <a class="active" href="/">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
@@ -448,7 +441,11 @@
     <!--custome script for all page-->
     <script src="{{ url('front/js/scripts.js') }}"></script>
     <!-- custom script for this page-->
-    
+    <script>
+      
+     
+      
+      </script>
     <script src="{{ url('front/js/jquery.slimscroll.min.js') }}"></script>
 @extends('layouts.footer')
 
