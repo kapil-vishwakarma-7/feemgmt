@@ -55,19 +55,18 @@ class CourseController extends Controller
             $data = $request->except('_token');
             $a = count($data['course']);
            for($i=0; $i < $a; $i++){
-          $semester = $data['semester'][$i];
+                $semester = $data['semester'][$i];
 
-            $s = new Course;
-           
-            $s->name = $data['course'][$i];
-            $s->duration = $data['duration'][$i];
-            
-            $s->semester = $semester;
-            $s->save();
-            }    
-           
-               $a=Course::all();
+                $s = new Course;
                
+                $s->name = $data['course'][$i];
+                $s->duration = $data['duration'][$i];
+                
+                $s->semester = $semester;
+                $s->save();
+      
+            }    
+
                for($i=1;$i<=$semester;$i++){
                     $sem = new Semester;
                     $sem->name = $i;
@@ -75,6 +74,8 @@ class CourseController extends Controller
                     $sem->save();
                }
 
+               $a=Course::all();
+               
                return view('coursetable',['courses'=>$a]);    
 
     }

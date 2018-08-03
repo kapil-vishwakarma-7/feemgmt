@@ -14,15 +14,16 @@
 
 
 
-Route::get('/', function () {
-    return view('index');
-})->middleware('auth');
+Route::get('/', 'HomeController@index');
 Route::resource('institute','InstituteController');
 Route::resource('courses','CourseController');
 Route::resource('admission','AdmissionController');
 Route::resource('enquiry','EnquiryController');
 Route::resource('feesmaster','FeesMasterController');
 Route::resource('fees','FeesController');
+Route::resource('report','ReportController');
+
+Route::post('createacademicyear','AcademicYearController@store');
 
 Route::get('getsemester','FeesMasterController@getSemester')->name('getsemester');
 
@@ -37,7 +38,7 @@ Route::get('getduefeeamount','FeesMasterController@getDueFeeAmount')->name('getd
 Route::get('enquairyview','EnquiryController@showEnquery');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index1')->name('home');
 
 
 

@@ -163,7 +163,7 @@ class FeesMasterController extends Controller
 
     public function getSemester(Request $r){
         // dd($r->id);
-        $course=Course::find(20);
+        $course=Course::find($r->id);
          $str='';
          foreach($course->semesters as $sem){
             $str = $str."<option value='$sem->id'>$sem->name</option>";

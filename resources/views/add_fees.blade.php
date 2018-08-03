@@ -13,15 +13,23 @@
 								<li><i class="fa fa-home"></i><a href="{{ url('/') }}">Home</a></li>
 								<li><i class="icon_document_alt"></i>Add</li>
 								<li><i class="fa fa-files-o"></i>Fees</li>
+									<li class="pull-right">
+									<button  class="btn btn-success btn-sm" data-toggle="modal" data-target="#academicYearModal">New Academic Year</button>
+								</li>
 							</ol>
+
 						</div>
-					</div>
+
+
+						</div>
 					<!-- Form validations -->
+	
 					<div class="row">
 						<div class="col-lg-12">
 							<section class="panel">
 								<header class="panel-heading">
 									View Fees Detail
+
 								</header>
 								<div class="panel-body">
 							
@@ -160,6 +168,46 @@
       
     </div>
   </div>
+
+  <!-- academic year modal -->
+		<!-- Modal -->
+  <div class="modal fade" id="academicYearModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create New Academic Year</h4>
+        </div>
+        <div class="modal-body">
+         <form id="form-academic-year">
+          <input class="form-control" type="hidden" id="fee_id" name="id" >
+          {{csrf_field()}}
+           <label>Previous Year (For Fee Master Reference)</label>
+           	<select class="form-control" name="previousYear">
+           		<option disabled hidden selected>Select Year </option>
+           		@foreach($years as $y)
+           			<option>{{$y->year}}</option>
+           		@endforeach
+           	</select>
+            <label>New Academic Year</label>
+            <input type="year" name="currentYear" class="form-control">
+           <br>
+           <center>
+           <button type="button" class="btn btn-primary" id="btn-academic-year">Create</button>
+           </center>
+         </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
 		 
 	</body>
 
@@ -185,25 +233,29 @@
 							
 					}
 			})
-			});
+	});
 
 
 	$("#btn-add_course").on('click',function(){
 		alert();		
+		createFeeMaster();
+	});
+	function createFeeMaster(){
 		$.ajax({
 			type:"POST",
-			url:'/feesmaster',
+			url:"{{url('feesmaster')}}",
 			data:$("#add-course").serialize(),
-
 			success: function(data){
 				alert("Fee Master Created");
+				getFeeMasters()
 			},
 			error:function(data){
 				alert("Cannot Add master");
 				console.log(data);
 			}
 		})
-	});
+	}
+
 	function getFeeMasters(){
 		var id = $("#sel-course_id").val();
 		var year = $('#sel-course_year').val();
@@ -211,14 +263,12 @@
 		// alert(year);
 		$.ajax({
 			type:'GET',
-			url : '/getfeemaster?id='+id+'&year='+year,
+			url : "{{url('getfeemaster')}}",
+			data:{'id':id,'year':year},
 			success:function(data){
 				// alert('ScrollView');
 				console.log(data);
 				$("#tab-fee_masters").html(data);
-
-   	
-
 			},
 			error:function(data){
 				alert(data);
@@ -248,11 +298,12 @@ $('#update').on('click',function(e){
     e.preventDefault(e);
         $.ajax({
         type:"PUT",
-        url:' feesmaster/'+$("#fee_id").val(),
+        url:"{{url('feesmaster/')}}"+"/"+$("#fee_id").val(),
         data: {'fees_type':fee_type,'fee_amount':fee_amount,'semester':semester },
         dataType: 'json',
         success: function(data){
              alert(data);
+             getFeeMasters();
             console.log(data);
         },
         error: function(data){
@@ -269,30 +320,62 @@ $('#update').on('click',function(e){
  </script>	
 <script type="text/javascript">
 	$("#add-course_id").on('change',function(){
-     var course=$(this).val();
+     	var course=$("#add-course_id").val();
+     	getSemester(course)
+	});
+	function getSemester(course){
 		// alert(course);
-		   $.ajax({
-        type:"get",
-        url:'getsemester?id='+$(this).val(),
+		$.ajax({
+	        type:"get",
+	        url:"{{url('getsemester')}}",
+	        data:{'id' : course},
+	        success: function(data){
+	             // alert(data);
+	             $('#semester').html(data);
+	             // alert('success');
+	            console.log(data);
+	        },
+	        error: function(data){
+	            alert("error")
+	            console.log(data); 
+	        }
+	    });
+	}
+
+$("#sel-course_year").on("change",function(){
+     $("#ac_year").val($(this).val());
+
+});
+$("#btn-academic-year").click(function(){
+	createAcademicYear($("#form-academic-year"));
+});
+
+function createAcademicYear(form){
+
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+    $.ajax({
+        type:"POST",
+        url:"{{url('createacademicyear')}}",
+        data: form.serialize(),
         success: function(data){
-             // alert(data);
-             $('#semester').html(data);
-             // alert('success');
+             alert(data);
+             getFeeMasters();
             console.log(data);
         },
         error: function(data){
-            alert("error")
             console.log(data);
-
         
-        }
+     }
     })
 
-	})
-$("#sel-course_year").on("change",function(){
-    // alert()
-   	$("#ac_year").val($(this).val());
-})
+
+
+}
 
 </script>
 

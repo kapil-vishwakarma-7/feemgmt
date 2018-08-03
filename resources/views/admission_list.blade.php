@@ -31,7 +31,7 @@
  <select class="form-control" name="year">
    <option selected disabled hidden value="">Select Year</option>
    @foreach($year as $y)
-    <option>{{$y->ac_year}}</option>
+    <option value="{{$y->year}}">{{$y->year}}</option>
     @endforeach
   </select>
 

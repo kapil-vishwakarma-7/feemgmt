@@ -7,7 +7,7 @@ use App\Course;
 use App\FeesMaster;
 use App\Semester;
 use Illuminate\Http\Request;
-
+use App\AcademicYear;
 class AdmissionController extends Controller
 {
     /**
@@ -40,8 +40,11 @@ class AdmissionController extends Controller
     public function create()
     {
         $a=Admission::all();
-        $years = FeesMaster::select('ac_year')->distinct('ac_year')->get();
+        $years = AcademicYear::all();
         $c=Course::all(); 
+
+
+
 
         return view('admission_list',['res'=>NULL,'admissions'=>$a,'year'=>$years,'course'=>$c]);
  

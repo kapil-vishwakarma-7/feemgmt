@@ -8,8 +8,8 @@
           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-laptop"></i> Dashboard</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.php">Home</a></li>
-              <li><i class="fa fa-laptop"></i>Dashboard</li>
+              <li><i class="fa fa-home"></i>Home</li>
+              
             </ol>
           </div>
         </div>
@@ -77,7 +77,7 @@
           <!--/.col-->
 
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <a href="{{ url('feespay') }}">
+            <a href="{{ url('admission/create') }}">
             <div class="info-box menu-box">
               <i class="fa fa-edit"></i>
               <div class="count">Pay </div>
@@ -104,12 +104,12 @@
 
     
                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
-            <a href="courses">
+            <a href="{{route('report.index')}}">
             <div class="info-box menu-box">
              <i class="fa fa-users .me"></i>
           
               <div class="count">Our</div>
-              <div class="title">Team</div>
+              <div class="title">Reports</div>
             </div>
             </a>
             <!--/.info-box-->
@@ -147,26 +147,22 @@
                     <tr>
                       
                       <th>All Enquiry :</th>
-                        <th>3000</th>
+                        <th>{{$data['en']}}</th>
                       
                     </tr>
                     <tr>
                       
                       <th>All Courses :</th>
-                     <th>30</th>
+                     <th>{{$data['cn']}}</th>
                     </tr>
                      <tr>
                       
                       <th>All Students :</th>
-                         <th>3400</th>
+                         <th>{{$data['sn']}}</th>
                       
                     </tr>
-                    <tr>
-                      
-                      <th>Total Payment :</th>
-                       <th>450300</th>
-                      
-                    </tr>
+
+
                   </thead>
                   
                 </table>
