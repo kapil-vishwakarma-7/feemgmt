@@ -64,12 +64,48 @@
  .error {
    color: red;
         }
+
+  .error-box{
+    position: fixed;
+    right: 500px;
+    display: none;
+    top: 100px;
+    background: #00002f;
+    height: 100px;
+    width: 250px;
+    z-index: 10;
+    color: #fff;
+  }
+ #err-msg{
+    margin-top: 40px;
+    text-align: center;
+    font-size:  20px;
+  }
+
        
 </style>
 
+
+<script type="text/javascript">
+  function showMsg(type,msg,duration=1500){
+    if(msg != "" || msg != null){
+     $("#err-msg").html(msg);
+    }
+    $(".error-box").show()
+    $(".error-box").animate({"opacity":1},1500);
+    $(".error-box").animate({"opacity":0},duration);   
+  }
+
+
+</script>
 </head>
 
 <body>
+  <div class="error-box">
+    <center>
+        <label id="err-msg">File is Uploading</label>
+    <center>
+  </div>
   <!-- container section start -->
   <section id="container" class="">
     <!--header start-->

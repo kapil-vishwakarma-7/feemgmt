@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Enquiry extends Model
 {
     public function course(){
-    	return $this->belongsTo('App\Course');
+    	return $this->belongsTo('App\Course')->withDefault(['name'=>'Not Found']);
     }
 }

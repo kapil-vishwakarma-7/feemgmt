@@ -9,13 +9,14 @@ class Admission extends Model
 
 
     public function course(){
-    	return $this->hasOne('App\Course','id','course_id');
+    	return $this->hasOne('App\Course','id','course_id')->withDefault(['name'=>'Not Found']);
     }
 
     public function fees(){
     	return $this->hasMany('App\Fees','student_id','id');
+    	
     }
     public function semester(){
-    	return $this->hasOne('App\Semester','id','semester');
+    	return $this->hasOne('App\Semester','id','semester')->withDefault(['name'=>"Not Found","course_id"=>0]);
     }
 }

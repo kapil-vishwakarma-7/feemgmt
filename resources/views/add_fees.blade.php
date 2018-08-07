@@ -271,7 +271,7 @@
 				$("#tab-fee_masters").html(data);
 			},
 			error:function(data){
-				alert(data);
+				alert("Cannot Get Fee Master");
 				console.log(data);
 			}
 		})

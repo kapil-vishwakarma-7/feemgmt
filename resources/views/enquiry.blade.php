@@ -89,8 +89,8 @@
         contentType: false,
         dataType: 'json',
         success: function(data){
-            alert('Enquiry Successfully.........');
-
+            // alert('Enquiry Successfully.........');
+            showMsg(1,"Enquiry Added");
             console.log(data);
 
         },

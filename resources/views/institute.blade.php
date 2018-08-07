@@ -143,9 +143,11 @@ $("#save").on('click',function(e){
 
         success: function(data){
             console.log(data);
-            alert("THANK U FOR REGISTERED !!");
+            showMsg(1,"Profile Updated",1500);
+            // alert("THANK U FOR REGISTERED !!");
         },
         error: function(data){
+            showMsg(1,"Cannot Updated Profile",1500);
           console.log(data)
         }
     })

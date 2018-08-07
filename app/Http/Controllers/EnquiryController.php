@@ -109,4 +109,7 @@ class EnquiryController extends Controller
     {
         //
     }
+    public function temp(){
+        return view('createuser');
+    }
 }

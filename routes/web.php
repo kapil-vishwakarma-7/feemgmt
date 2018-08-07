@@ -36,6 +36,8 @@ Route::get('getfeeamount','FeesMasterController@getFeeAmount')->name('getfeeamou
 Route::get('getduefeeamount','FeesMasterController@getDueFeeAmount')->name('getduefeeamount');
 
 Route::get('enquairyview','EnquiryController@showEnquery');
+
+Route::get('createuser','EnquiryController@temp');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index1')->name('home');
@@ -63,3 +65,9 @@ Route::get('error',function(){
 
 	return redirect('/login');
 });
+
+
+Route::get("chc",function(){
+
+})->middleware('account_read');
+
