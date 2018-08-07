@@ -1,7 +1,6 @@
 
-	@extends('layouts.header')
-
-	@section('body')
+@extends('layouts.header')
+@section('body')
     
 
 @endsection
