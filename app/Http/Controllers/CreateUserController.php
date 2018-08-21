@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Permission;
 use App\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
+use App\UserPermission;
 class CreateUserController extends Controller
 {
     /**
@@ -15,7 +16,8 @@ class CreateUserController extends Controller
     public function index()
     {
         $a = User::all();
-        return view('createuser',['users'=>$a]);
+        $p = Permission::all();
+        return view('createuser',['users'=>$a,'permissions'=>$p]);
     }
 
     /**
@@ -36,17 +38,30 @@ class CreateUserController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request);
+
         $u = new User;
-        $u->name  = $request->name;
+        $u->name  = $request->fname.' '.$request->lname;
         $u->email = $request->email;
-        $u->password = $request->password;
+        $u->password = Hash::make($request->password);
         $u->mobile = $request->mobile;
-        $u->roles = $request->roles;
+
+
+        $u->designation = $request->designation;
         $u->save();
-
-
-        
-
+        $per = Permission::all();
+        foreach ($per as $e) {
+            $rname = "R".$e->id; 
+            $wname = "W".$e->id;
+            $up = new UserPermission;
+            $up->user_id = $u->id;
+            $up->permission_id = $e->id;
+            $up->read  = $request->$rname;
+            $up->write = $request->$wname;
+            echo "$e->name >> ". $request->$rname.'  '.$request->$wname;
+            $up->save();
+        }
 
     }
 

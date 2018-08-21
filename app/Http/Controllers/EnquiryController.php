@@ -15,7 +15,7 @@ class EnquiryController extends Controller
      */
     public function __construct(){
         $this->middleware('admin');
-
+        $this->middleware('enquiry')->only(['store']);
 
         // $this->middleware('log')->only('index');
 
@@ -41,7 +41,7 @@ class EnquiryController extends Controller
     
     }
      public function showEnquery(){     
-     $a=Enquiry::paginate(5);
+         $a=Enquiry::paginate(5);
         return view('enquiry_table',['enquiries'=>$a]);
     }
     /**
@@ -108,8 +108,5 @@ class EnquiryController extends Controller
     public function destroy(Enquiry $enquiry)
     {
         //
-    }
-    public function temp(){
-        return view('createuser');
     }
 }

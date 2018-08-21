@@ -16,7 +16,7 @@ class CourseController extends Controller
      */
     public function __construct(){
         $this->middleware('admin');
-
+        $this->middleware('course')->only(['store','update','destroy']);
 
         // $this->middleware('log')->only('index');
 
@@ -28,7 +28,6 @@ class CourseController extends Controller
     {
         $courses = Course::all();
         $y = AcademicYear::all();
-        
         return view('courses',['courses'=>$courses,'years'=>$y]);
     }
 

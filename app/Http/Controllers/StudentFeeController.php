@@ -2,25 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\StudentFees;
+use App\StudentFee;
 use Illuminate\Http\Request;
 
-class StudentFeesController extends Controller
+class StudentFeeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('admin');
-
-
-        // $this->middleware('log')->only('index');
-
-        // $this->middleware('subscribed')->except('store');
-
-    }
     public function index()
     {
         //
@@ -44,16 +35,28 @@ class StudentFeesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+        $semesters = $request->semester;
+        $amount = $request->amount;
+        $i=0;
+        foreach($semesters as $sem){
+            $sf = new StudentFee;
+            $sf->admission_id = $request->admission_id;
+            $sf->semester_id = $sem;
+            $sf->amount = $amount[$i];
+            $sf->save();
+            $i++;
+        }
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\StudentFees  $studentFees
+     * @param  \App\StudentFee  $studentFee
      * @return \Illuminate\Http\Response
      */
-    public function show(StudentFees $studentFees)
+    public function show(StudentFee $studentFee)
     {
         //
     }
@@ -61,10 +64,10 @@ class StudentFeesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\StudentFees  $studentFees
+     * @param  \App\StudentFee  $studentFee
      * @return \Illuminate\Http\Response
      */
-    public function edit(StudentFees $studentFees)
+    public function edit(StudentFee $studentFee)
     {
         //
     }
@@ -73,10 +76,10 @@ class StudentFeesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\StudentFees  $studentFees
+     * @param  \App\StudentFee  $studentFee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StudentFees $studentFees)
+    public function update(Request $request, StudentFee $studentFee)
     {
         //
     }
@@ -84,10 +87,10 @@ class StudentFeesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\StudentFees  $studentFees
+     * @param  \App\StudentFee  $studentFee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StudentFees $studentFees)
+    public function destroy(StudentFee $studentFee)
     {
         //
     }

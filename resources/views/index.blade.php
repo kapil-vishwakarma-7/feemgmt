@@ -103,7 +103,7 @@
           <!--/.col-->
 
     
-               <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
             <a href="{{route('report.index')}}">
             <div class="info-box menu-box">
              <i class="fa fa-users .me"></i>
@@ -115,18 +115,7 @@
             <!--/.info-box-->
           </div>
            
-           {{--  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <a href="">
-            <div class="info-box menu-box">
-              <i class="fa fa-users"></i>
-              <div class="count">Our</div>
-              <div class="title">Student</div>
-            </div>
-            </a>
-            <!--/.info-box-->
-          </div> --}}
-          <!--/.col-->
-
+           
         </div>
 
         <!-- project team & activity start -->
@@ -171,7 +160,7 @@
             </section>
             <!--Project Activity end-->
           </div>
-              <div class="col-md-6 portlets">
+              <div class="col-md-6 portlets hide">
             <section class="panel">
                  <div class="panel-heading">
                 <div class="pull-left">Quick Post</div>

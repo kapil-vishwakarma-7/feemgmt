@@ -24,13 +24,19 @@
                   </tr>
                   
                  <tr>
+                
                   <td>{{$student->student_name}}</td>
                   <td>{{$student->id}}</td>
                   <td>{{$student->admission_year}}</td>
                   <td>{{$student->student_contact}}</td>
-                  <td>{{$student->course->feeMaster->where('ac_year',$student->admission_year)->sum('amount')}}</td>
+                  
+                  <td>{{$student->studentfees->sum('amount')}}</td>
+                  
                   <td>{{ $student->fees->sum('amount')}}</td>
-                  <td> <label>{{$student->course->feeMaster->where('ac_year',$student->admission_year)->sum('amount') - $student->fees->sum('amount') }}</label> </td>
+                  
+                  <td> <label>{{
+                  $student->studentfees->sum('amount') - $student->fees->sum('amount') }}</label> </td>
+                
                 </tr>
                   
                   

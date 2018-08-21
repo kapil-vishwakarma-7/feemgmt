@@ -237,7 +237,7 @@
 
 
 	$("#btn-add_course").on('click',function(){
-		alert();		
+	
 		createFeeMaster();
 	});
 	function createFeeMaster(){
@@ -250,7 +250,11 @@
 				getFeeMasters()
 			},
 			error:function(data){
-				alert("Cannot Add master");
+              if(data.status == 403){
+                showMsg(1,"Unauthorised User",1500);
+                return;
+              }
+                showMsg(1,"Cannot Add Fee",1500);
 				console.log(data);
 			}
 		})
@@ -309,6 +313,11 @@ $('#update').on('click',function(e){
         error: function(data){
             console.log(data);
         
+              if(data.status == 403){
+                showMsg(1,"Unauthorised User",1500);
+                return;
+              }
+                showMsg(1,"Cannot Add Fee",1500);
      }
     })
     });
@@ -365,16 +374,19 @@ function createAcademicYear(form){
         success: function(data){
              alert(data);
              getFeeMasters();
-            console.log(data);
+             console.log(data);
         },
         error: function(data){
             console.log(data);
+
+              if(data.status == 403){
+                showMsg(1,"Unauthorised User",1500);
+                return;
+              }
+                showMsg(1,"Cannot Add Academic Year",1500);
         
      }
     })
-
-
-
 }
 
 </script>

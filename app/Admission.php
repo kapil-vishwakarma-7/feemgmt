@@ -19,4 +19,8 @@ class Admission extends Model
     public function semester(){
     	return $this->hasOne('App\Semester','id','semester')->withDefault(['name'=>"Not Found","course_id"=>0]);
     }
+
+    public function studentfees(){
+        return $this->hasMany('App\StudentFee','admission_id','id');
+    }
 }

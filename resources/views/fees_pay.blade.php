@@ -78,7 +78,8 @@
 
                     
                     <td>
-                     <input type="date"  id="add-fee-date" name="fee_date" class="form-control"> 
+                     <input type="date" 
+                      id="add-fee-date" value="{{date('Y-m-d')}}" name="fee_date" class="form-control"> 
                     </td>
 
 </tr>
@@ -89,6 +90,7 @@
                         <th></th>
                         
                         <th>Remark</th>
+                        <th>Late Fee</th>
                   </tr>
            <tr>
 
@@ -96,7 +98,7 @@
                   <input type="text" id="add-fee-pay" class="form-control" name="amount">
                 </td>
                 <td>
-                  <input type="text" id="add-fee-due-amount" class="form-control" name="">
+                  <input type="text" id="add-fee-due-amount" class="form-control" name="" readonly>
                 </td>
                     <td><select id="add-fee-mode" class="form-control" name="payment_mode">
                       <option value="Cash">Cash</option>
@@ -110,6 +112,8 @@
                     </td>
                    
                     <td><input type="text" class="form-control" name="description"></td>
+                  
+                    <td><input type="Number" value="0" class="form-control" name="late_fee"></td>
                   
                   
                  </form>                  
@@ -264,13 +268,14 @@ $("#add-fee-pay").on('keyup',function(){
 
 $("#add-fee-paybtn").click(function (){
   $.ajax({
-    url:'/fees',
+    url:"{{url('fees')}}",
     type:'POST',
     data: $("#add-fee-form").serialize(),
     success:function(data){
       alert(data);      
-      $("#show_fee_detail").html(data['div1']);
-      $("#show_fee").html(data['div2']);  
+      $("#show_fee").html(data['div2']);
+      
+      $("#show_fee_detail").html(data['div1']);  
       console.log(data);
     },
     error:function(data){
@@ -286,12 +291,14 @@ $("#add-fee-paybtn").click(function (){
   function getFeeAmount(){
     var sem_id = $("#add-fee-semester").val();
     var year  = {{$student->admission_year}};
+    var s_id = {{$student->id}}
     $.ajax({
         url:"{{url('/getfeeamount')}}",
-        data:{id:sem_id,year:year},
+        data:{id:sem_id,sid:s_id},
         type:'GET',
         success:function(data){
           $("#add-fee-total-amount").val(data);
+          $("#add-fee-date").valueAsDate = new Date();
           console.log('res'+data);
         },
         error:function(data){

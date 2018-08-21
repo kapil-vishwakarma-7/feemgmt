@@ -96,7 +96,11 @@
         },
         error: function(data){
             console.log(data);
-        
+            if(data.status){
+             showMsg(1,"Unauthorised User",1500);
+             return;
+            }
+             showMsg(1,"Enquiry Not Created",1500);
         }
     })
     });

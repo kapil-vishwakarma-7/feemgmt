@@ -9,6 +9,7 @@ use App\Course;
 use App\Semester;
 use App\Fees;
 use App\AcademicYear;
+use App\StudentFee;
 class FeesMasterController extends Controller
 {
     /**
@@ -18,6 +19,7 @@ class FeesMasterController extends Controller
      */
     public function __construct(){
         $this->middleware('admin');
+        $this->middleware('feemaster')->only(['store','update']);
 
 
         // $this->middleware('log')->only('index');
@@ -185,10 +187,8 @@ class FeesMasterController extends Controller
         return response()->json($str1,200);
     }
     public function getFeeAmount(Request $request){
-        $fm = Semester::find($request->id);
-        $year = $request->year;
-        $str = $fm->feemasters->where('ac_year',$year)->sum('amount');
-        return response()->json($str,200);   
+        $a = StudentFee::where('admission_id',$request->sid)->where('semester_id',$request->id)->get()->first()->amount;
+        return response()->json($a,200);   
     }
 
     public function getDueFeeAmount(Request $request){
@@ -198,6 +198,7 @@ class FeesMasterController extends Controller
         $fees = Fees::where('student_id',$student_id)->where('semester_id',$semester)->get();
         $amount = $fees->sum('amount');
         // dd($amount);
+
         return response()->json($amount ,200);
 
 

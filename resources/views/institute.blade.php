@@ -147,8 +147,13 @@ $("#save").on('click',function(e){
             // alert("THANK U FOR REGISTERED !!");
         },
         error: function(data){
-            showMsg(1,"Cannot Updated Profile",1500);
           console.log(data)
+          if(data.status == 403){
+              showMsg(1,"Unauthorised",1500);
+              return;
+            }
+              showMsg(1,"Cannot Updated Profile",1500);
+          
         }
     })
     });

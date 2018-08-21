@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 use Auth;
 use Closure;
-use Request;
-use App\Permission;
-class account_read
+
+class Profile
 {
     /**
      * Handle an incoming request.
@@ -15,8 +14,7 @@ class account_read
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
-
+    {
 
         $per = Auth::user()->permissions;
 
@@ -24,10 +22,8 @@ class account_read
            return ($value['permission_id']==13);
         });
         if(!$dec){
-                return response()->json("Unauthorised",403);
+                return response()->json(array("Unauthorised"),403);
         }
         return $next($request);
-
     }
-
 }

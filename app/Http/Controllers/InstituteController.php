@@ -14,7 +14,7 @@ class InstituteController extends Controller
      */
     public function __construct(){
         $this->middleware('admin');
-
+        $this->middleware('profile')->only('store');
 
         // $this->middleware('log')->only('index');
 

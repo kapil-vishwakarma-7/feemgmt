@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Admission;
 use App\Course;
 use App\FeesMaster;
@@ -17,7 +17,7 @@ class AdmissionController extends Controller
      */
     public function __construct(){
         $this->middleware('admin');
-
+        $this->middleware('admission')->only(['store','update','destroy']);
 
         // $this->middleware('log')->only('index');
 
@@ -27,9 +27,9 @@ class AdmissionController extends Controller
 
     public function index()
     {
+        $years = AcademicYear::all();
         $a=Course::all();
-
-        return view('admission',['res'=>NULL,'courses'=>$a]);
+        return view('admission',['res'=>NULL,'years'=>$years,'courses'=>$a]);
     }
 
     /**
@@ -72,6 +72,7 @@ class AdmissionController extends Controller
         $a->current_add=$request->current_add;
         $a->category=$request->category;
         $a->cast=$request->cast;
+        $a->admission_year=$request->admission_year;
         $a->medium=$request->medium;
         $a->adhar_no=$request->adhar_no;
         $a->exam=$request->exam;
@@ -94,6 +95,13 @@ class AdmissionController extends Controller
         $a->image_adhar=$img_adhar->getClientOriginalName();
         $a->save();
         $msg="Admission succesfully....";
+
+
+
+        $ab = FeesMaster::where('course_id',$request->course_id)->where('ac_year',$a->admission_year)->select('semester_id', DB::raw('SUM(amount) as amount'))->groupBy('semester_id')->orderBy('semester_id')->get();
+        
+        return view('student_fee_content',['sem'=>$ab,'admission_id'=>$a->id]);
+        
         return response()->json($msg);
  
     }
@@ -184,7 +192,7 @@ class AdmissionController extends Controller
 
     public function getSemester(Request $r){
         // dd($r->id);
-        $course=Course::find(20);
+        $course=Course::find($r->id);
          $str='<option selected disabled hidden value="">Select Year</option>';
          $i=1;
          
@@ -203,5 +211,9 @@ class AdmissionController extends Controller
         return view('student_update',['student'=>$a]);
     } 
 
-
+    public function admissionForm(Request $request){
+            $id = $request->id;
+            $a = Admission::find($id);
+            return view('docs.fordesingcopyslip',['e'=>$a]);
+    }
 }

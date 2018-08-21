@@ -177,10 +177,15 @@
     success: function (data) {
        $("#result").html(data);
        refreshCourse();
-       alert("THANK U FOR REGISTERED COURSE !!!");
+       alert("Course Is Added !!!");
     },
     error: function (data) {
         console.log(data);
+        if(data.status){
+            showMsg(1,"Unauthorised User",1500);
+            return;
+        }
+        showMsg(1,"Cannot Add courses",1500);
 
     },
 });
@@ -229,7 +234,10 @@ $('#update').on('click',function(e){
         },
         error: function(data){
             console.log(data);
-        
+           if(data.status){
+            showMsg(1,"Unauthorised User",1500);
+            return;
+        }
         }
     })
     });
@@ -252,7 +260,10 @@ $('#update').on('click',function(e){
         },
        error: function(data){
             console.log(data);
-        
+             if(data.status){
+                showMsg(1,"Unauthorised User",1500);
+                return;
+            }
         }
     });
   });

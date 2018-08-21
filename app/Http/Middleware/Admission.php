@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-use Auth;
+
 use Closure;
-use Request;
-use App\Permission;
-class account_read
+
+class Admission
 {
     /**
      * Handle an incoming request.
@@ -15,19 +14,17 @@ class account_read
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
+    {
 
-
-        $per = Auth::user()->permissions;
+        $per = \Auth::user()->permissions;
 
         $dec =  $per->search(function($value, $key) {
-           return ($value['permission_id']==13);
+           return ($value['permission_id']==16);
         });
         if(!$dec){
-                return response()->json("Unauthorised",403);
+                return response()->json(array("Unauthorised"),403);
         }
+
         return $next($request);
-
     }
-
 }

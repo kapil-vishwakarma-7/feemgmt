@@ -146,12 +146,19 @@
                                             </select>
                                           
                                         </div>
-                                         <div class=" col-md-4 ">
-                      
+                        <div class=" col-md-4 ">
                           <label for="aadhar" class="control-label">Aadhar No. <span class="required">*</span></label>
                           <input class="form-control round-input"  name="adhar_no" minlength="12" maxlength="12" type="text" required />
                         </div>
        
+                         <div class=" col-md-4 ">
+                          <label for="aadhar" class="control-label">Admission Year <span class="required">*</span></label>
+                          <select class="form-control round-input"  name="admission_year" required>
+                              @foreach($years as $e)
+                                <option value="{{$e->year}}">{{$e->year}}</option>
+                              @endforeach
+                          </select>
+                        </div>
   </div>                                 
     <div class="col-md-12">
     <div class="col-md-offset-1 col-md-10">
@@ -228,10 +235,41 @@
         </section>
       </section>
     
+<!-- fee modal -->
+    <!-- Modal -->
+  <div class="modal fade" id="student-fee-modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create Student Fee Card</h4>
+        </div>
+        <div id="student-fee-content" class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- //fee structure modal -->
+
+
+
+
+
+
      
   </body>
   <script type="text/javascript">
+  
+
   $(document).ready(function() {
+
     $.uploadPreview({
       input_field: "#image-upload",   // Default: .image-upload
       preview_box: "#image-preview",  // Default: .image-preview
@@ -316,7 +354,7 @@
   <script type="text/javascript">
     
   $('#submit').on('click',function(e){
-      alert('asds');
+      
       e.preventDefault(e);
           $.ajax({
           type:"POST",
@@ -324,26 +362,28 @@
           data: new FormData($("#admission_form")[0]),
           processData: false,
           contentType: false,
-          dataType: 'json',
           success: function(data){
-              alert('asd');
+              
+            $("#student-fee-modal").modal('show');
+           $("#student-fee-content").html(data);
+ 
+              showMsg(1,"Admission Done",1500);
               console.log(data);
-
+              
           },
           error: function(data){
               console.log(data);
-          
+              if(data.status == 403){
+                showMsg(1,"Unauthorised User",1500);
+                    return;
+                }
+                showMsg(1,"Admission Failed",1500);
           }
       })
       });
-
 
   </script>
   <script src="{{ url('front/js/admission_validate.js') }}"></script>
     <!--custome script for all page-->
     <script type="text/javascript" src="{{ url('front/js/image.min.js') }}"></script>
-
-
-
-
     @endsection

@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://gvcisehore.co.in/laravel5.6.2'),
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +104,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY','hopcbuzriid1jhoabfcp65ogkrlkmlcv'),
 
     'cipher' => 'AES-256-CBC',
 

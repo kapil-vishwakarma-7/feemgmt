@@ -23,10 +23,16 @@
                   @foreach($student->course->semesters as $e)
                    <tr>
                   	<td>{{$e->name}}</td>
-                  	<td>{{$e->feemasters->where('ac_year',$student->admission_year)->sum('amount')}}</td>
+
+                  	<td>{{ $student->studentfees->where('semester_id',$e->id)->sum('amount') }}</td>
                   	<td>{{$student->fees->where('semester_id',$e->id)->sum('amount')}}</td>
-                  	<td>{{$e->feemasters->where('ac_year',$student->admission_year)->sum('amount') - $student->fees->where('semester_id',$e->id)->sum('amount')}} </td>
-                  	<td><i class="fa fa-print"></i></td>
+
+                  	<td>{{
+                        $student->studentfees->where('semester_id',$e->id)->sum('amount') - $student->fees->where('semester_id',$e->id)->sum('amount')
+
+                    }} </td>
+                  	
+                    <td><i class="fa fa-print"></i></td>
                    </tr>
                   @endforeach
                   

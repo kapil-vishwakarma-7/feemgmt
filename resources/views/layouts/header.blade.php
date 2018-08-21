@@ -25,79 +25,77 @@
   <link href="{{ url('front/css/style.css') }}" rel="stylesheet">
   <link href="{{ url('front/css/style-responsive.css') }}" rel="stylesheet" />
  
-    <style type="text/css">
-#image-preview,#image-preview1,#image-preview2{
-  width: 200px;
-  height: 150px;
-  position: relative;
-  overflow: hidden;
-  background-color: #ffffff;
-  color: #ecf0f1;
-  border: 2px solid gray;
-}
-#image-preview input ,#image-preview1 input,#image-preview2 input  {
-  line-height: 200px;
-  font-size: 200px;
-  position: absolute;
-  opacity: 0;
-  z-index: 10;
-  color: green;
-}
-#image-preview label,#image-preview1 label ,#image-preview2 label{
-  position: absolute;
-  z-index: 5;
-  opacity: 0.8;
-  cursor: pointer;
-  background-color: #4cd964;
-  width: 200px;
-  height: 50px;
-  font-size: 20px;
-  line-height: 50px;
-  text-transform: uppercase;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  text-align: center;
-}
- .error {
-   color: red;
-        }
-
-  .error-box{
-    position: fixed;
-    right: 500px;
-    display: none;
-    top: 100px;
-    background: #00002f;
-    height: 100px;
-    width: 250px;
-    z-index: 10;
-    color: #fff;
-  }
- #err-msg{
-    margin-top: 40px;
-    text-align: center;
-    font-size:  20px;
-  }
-
-       
-</style>
-
-
-<script type="text/javascript">
-  function showMsg(type,msg,duration=1500){
-    if(msg != "" || msg != null){
-     $("#err-msg").html(msg);
+  <style type="text/css">
+    #image-preview,#image-preview1,#image-preview2{
+      width: 200px;
+      height: 150px;
+      position: relative;
+      overflow: hidden;
+      background-color: #ffffff;
+      color: #ecf0f1;
+      border: 2px solid gray;
     }
-    $(".error-box").show()
-    $(".error-box").animate({"opacity":1},1500);
-    $(".error-box").animate({"opacity":0},duration);   
-  }
+    #image-preview input ,#image-preview1 input,#image-preview2 input  {
+      line-height: 200px;
+      font-size: 200px;
+      position: absolute;
+      opacity: 0;
+      z-index: 10;
+      color: green;
+    }
+    #image-preview label,#image-preview1 label ,#image-preview2 label{
+      position: absolute;
+      z-index: 5;
+      opacity: 0.8;
+      cursor: pointer;
+      background-color: #4cd964;
+      width: 200px;
+      height: 50px;
+      font-size: 20px;
+      line-height: 50px;
+      text-transform: uppercase;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      text-align: center;
+    }
+     .error {
+       color: red;
+            }
+
+      .error-box{
+        position: fixed;
+        right: 500px;
+        display: none;
+        top: 100px;
+        background: #00002f;
+        height: 100px;
+        width: 250px;
+        z-index: 10;
+        color: #fff;
+      }
+     #err-msg{
+        margin-top: 40px;
+        text-align: center;
+        font-size:  20px;
+      }
+  </style>
+  <script type="text/javascript">
+    function showMsg(type,msg,duration=1500){
+      if(msg != "" || msg != null){
+       $("#err-msg").html(msg);
+      }
+      $(".error-box").show()
+      $(".error-box").animate({"opacity":1},1500);
+      $(".error-box").animate({"opacity":0},duration);   
+    }
+
+    var APP_URL = "{{url('/')}}"; 
+  </script>
 
 
-</script>
 </head>
 
 <body>
@@ -436,11 +434,23 @@
                           <span>Fees Master</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-            {{-- <ul class="sub">
-              <li><a class="" href="">Add Fees</a></li>
-              <li><a class="" href="basic_table.html">Delete Fees</a></li>
-              <li><a class="" href="basic_table.html">Update Fees</a></li>
-            </ul> --}}
+          </li>
+
+          <li >
+            <a href="{{ route('createuser.index') }}" class="">
+                          <i class="fa fa-user"></i>
+                          <span>Users</span>
+
+                      </a>
+          </li>
+
+
+          <li >
+            <a href="{{ route('createuser.index') }}" class="">
+                          <i class="fa fa-user"></i>
+                          <span>Reports</span>
+
+                      </a>
           </li>
 
           

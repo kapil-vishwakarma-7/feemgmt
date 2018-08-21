@@ -57,6 +57,7 @@ class FeesController extends Controller
         $fees->upi = $request->upi;
         $fees->cheque_no = $request->cheque_no;
         $fees->description = $request->description;
+        $fees->late_fee = $request->late_fee;
 
         $rn = Fees::where('fee_date',$request->fee_date)->count();
 
@@ -123,7 +124,11 @@ class FeesController extends Controller
 
     public function feesPay($id){
         $u = Admission::find($id);
+        // dd($u->studentfees);
         $res=NULL;
         return view('fees_pay',['res'=>$res,'student'=>$u]);
+    }
+    public function feeSlip(Request $request){
+        return view('docs.feeslip');
     }
 }
