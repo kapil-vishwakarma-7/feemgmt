@@ -135,7 +135,7 @@
 
       <!--logo start-->
      <!-- <a href="/" class="logo">MCRPV <span class="lite">Admin</span></a>-->
-        <a href="/" class="logo"><img src="{{url('front/img/mculogo.png')}}" height="60" width="60" ></a>
+        <a href="/" class="logo"><img src="{{url('front/img/india.png')}}" height="60" width="60" ></a>
       <!--logo end-->
 
        

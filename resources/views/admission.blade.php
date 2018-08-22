@@ -46,7 +46,7 @@
 
                         <div class="col-md-4 ">
                       
-                          <label for="inputError" class="control-label">Email Address<span class="required">-</span></label>
+                          <label for="inputError" class="control-label">Email Address<span class="required"></span></label>
                           <input class="form-control round-input"  name="email"  type="email" required />
                         </div>
                         <div class="col-md-4  ">
@@ -57,7 +57,7 @@
                        <div class="col-md-4">
                         <label class="control-label" for="gender">Select Gender <span class="required">*</span></label>
                         <select class="form-control round-input" name="gender" required>
-                          <option value=''  hidden selected disabled>>Select ...</option>
+                          <option value=''  hidden selected disabled>Select ...</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
                                                 <option>Others</option>
