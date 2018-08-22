@@ -19,7 +19,7 @@
                   Student List
                 </header>
                 <div class="panel-body">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <form class="form-validate form-horizontal" id="search-form" >
                    {{csrf_field()}}
               <label>Enrollment No</label>
@@ -54,14 +54,18 @@
   </select>
   <br>
 </div>
+<div class="col-md-1">
+    <br>
 <button type="button"  class="btn btn-primary" id="search-btn">search</button>
+  
+</div>
 </form>
 <div class="col-md-8">
   
 </div>
 <br>
  <div id="result">
-   @include('master_fees_table');
+   @include('master_fees_table')
  </div>
  
   </div> 

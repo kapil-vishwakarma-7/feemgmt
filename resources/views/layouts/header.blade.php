@@ -81,6 +81,27 @@
         text-align: center;
         font-size:  20px;
       }
+      
+      .sub-dropdown a:hover{
+          color:aqua;
+      }
+      
+      ul.sidebar-menu li ul.sub li {
+    background: #f8f8f8;
+         
+   
+}
+         ul.sidebar-menu li ul.sub li a{
+    
+          color: #54667a;
+   
+}
+   
+      ul.sidebar-menu li ul.sub li a:hover{
+  
+          color: #3377ec;
+   
+}
   </style>
   <script type="text/javascript">
     function showMsg(type,msg,duration=1500){
@@ -397,8 +418,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{{route('enquiry.index') }} ">New Enquiry</a></li>
-              <li><a class="" href=" {{ route('enquiry.create') }} ">View Enquiry</a></li>
+              <li class="sub-dropdown" ><a  href="{{route('enquiry.index') }} ">New Enquiry</a></li>
+              <li class="sub-dropdown"><a  href=" {{ route('enquiry.create') }} ">View Enquiry</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -408,8 +429,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{{ route('admission.index') }}">New Admission</a></li>
-              <li><a class="" href="{{ route('admission.create') }}">Student List</a></li>
+              <li><a class="sub-dropdown" href="{{ route('admission.index') }}">New Admission</a></li>
+              <li><a class="sub-dropdown" href="{{ route('admission.create') }}">Student List</a></li>
               {{-- <li><a class="" href="grids.html">Grids</a></li> --}}
             </ul>
           </li>
@@ -432,7 +453,6 @@
             <a href="{{ route('feesmaster.index') }}" class="">
                           <i class="fa fa-rupee"></i>
                           <span>Fees Master</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
           </li>
 
