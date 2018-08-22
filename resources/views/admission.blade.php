@@ -28,6 +28,15 @@
                       {{csrf_field()}}
                       <div class="col-md-12">
                         <div class="alert alert-info well-sm text-center"><h4>Student Details</h4></div>
+                          
+                           <div class=" col-md-4 ">
+                          <label for="aadhar" class="control-label">Admission Year <span class="required">*</span></label>
+                          <select class="form-control round-input"  name="admission_year" required>
+                              @foreach($years as $e)
+                                <option value="{{$e->year}}">{{$e->year}}</option>
+                              @endforeach
+                          </select>
+                        </div>
                         <div class="col-md-4">
                         <label class="control-label" for="courses1">Course <span class="required">*</span></label>
                         <select   class="form-control round-input" name="course_id"  required>
@@ -38,6 +47,7 @@
                                             </select>
                                           
                                         </div>
+                          
                       <div class="col-md-4 ">
                       
                           <label for="fullname" class="control-label">Student Full Name <span class="required">*</span></label>
@@ -88,6 +98,28 @@
                           <input class="form-control round-input"  name="dob"  type="date" required />
 
                         </div>
+                          
+                           <div class="col-md-4">
+                      
+                    
+                        <label class="control-label" for="caste">Caste <span class="required">*</span></label>
+                        <select class="form-control round-input" name="cast" required>
+                          <option value=''  hidden selected disabled  >Select ...</option>
+                                                <option>Hindu</option>
+                                                <option>Muslim</option>
+                                                <option>Sikh</option>
+                                              <option>Christian</option>
+                                              <option>Buddhist</option>
+                                              <option>Jain</option>
+                                              <option>Others</option>
+                                            </select>
+                                          
+                                        </div>
+                        <div class=" col-md-4 ">
+                          <label for="aadhar" class="control-label">Aadhar No. <span class="required">*</span></label>
+                          <input class="form-control round-input"  name="adhar_no" minlength="12" maxlength="12" type="text" required />
+                        </div>
+       
                     
 
                       <div class="col-md-6 ">
@@ -117,48 +149,28 @@
                                             </select>
                                           
                                         </div>
-                                        <div class="col-md-4">
+                          
+                          <div class="col-md-4">
                       
                     
-                        <label class="control-label" for="caste">Caste <span class="required">*</span></label>
-                        <select class="form-control round-input" name="cast" required>
+                        <label class="control-label" for="blood_group">Blood Group <span class="required">*</span></label>
+                        <select class="form-control round-input" name="blood_group" required>
                           <option value=''  hidden selected disabled  >Select ...</option>
-                                                <option>Hindu</option>
-                                                <option>Muslim</option>
-                                                <option>Sikh</option>
-                                              <option>Christian</option>
-                                              <option>Buddhist</option>
-                                              <option>Jain</option>
-                                              <option>Others</option>
+                                              <option>A+</option>
+        <option>A-</option>
+        <option>B+</option>
+        <option>B-</option>
+        <option>O+</option>
+        <option>O-</option>
+        <option>AB+</option>
+        <option>AB-</option>
                                             </select>
                                           
                                         </div>
+                                     
                       
-                      <div class="col-md-4">
                       
-                    
-                        <label class="control-label" for="medium">Medium <span class="required">*</span></label>
-                        <select class="form-control round-input" name="medium" required>
-                          <option value=''  hidden selected disabled>Select ...</option>
-                                                <option>Hindi</option>
-                                                <option>English</option>
-                                              
-                                            </select>
-                                          
-                                        </div>
-                        <div class=" col-md-4 ">
-                          <label for="aadhar" class="control-label">Aadhar No. <span class="required">*</span></label>
-                          <input class="form-control round-input"  name="adhar_no" minlength="12" maxlength="12" type="text" required />
-                        </div>
-       
-                         <div class=" col-md-4 ">
-                          <label for="aadhar" class="control-label">Admission Year <span class="required">*</span></label>
-                          <select class="form-control round-input"  name="admission_year" required>
-                              @foreach($years as $e)
-                                <option value="{{$e->year}}">{{$e->year}}</option>
-                              @endforeach
-                          </select>
-                        </div>
+                        
   </div>                                 
     <div class="col-md-12">
     <div class="col-md-offset-1 col-md-10">
@@ -182,6 +194,17 @@
         <label for="year" class="control-label">Year <span class="required">*</span></label>
                           <input class="form-control round-input"  name="year" minlength="5" type="text" required />
       </div>
+        <div class="col-md-2">
+                        <label class="control-label" for="medium">Medium <span class="required">*</span></label>
+                        <select   class="form-control round-input" name="course_id"  required>
+                          <option hidden selected disabled >Select medium</option>
+                         
+                                                <option value="hindi">Hindi</option>
+                                                <option value="english">English</option>
+                                              
+                                            </select>
+                                          
+                                        </div>
       <div class="col-md-2">
         <label for="marks" class="control-label">Obtain Marks <span class="required">*</span></label>
                           <input class="form-control round-input"  name="obtain_mark"  type="text" id="marks" required />
