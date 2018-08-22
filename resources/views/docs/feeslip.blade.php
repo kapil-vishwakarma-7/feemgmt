@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admission slip</title>
+  <title>Admission slip</title>
 </head>
 <style type="text/css">
 body {
@@ -89,14 +89,20 @@ hr
   float: right;*/
 }
 #receiptfilldata{
-  width: 1170px;
-  height: 290px; 
+  width: 1168px;
+  height: 250px; 
 padding-right: 20px;
 padding-left: 20px;
+/*background-color:yellow;*/
 }
-#Received{
+
+#Received4{
   font-size: 30px;
   margin-right: 0px;
+ /*border:1px solid black;*/
+ height: 35px;
+ width: 1120px;
+ display:flex;  
  
 }
  #cardbox{
@@ -114,22 +120,102 @@ padding-left: 20px;
   width: 1170px;
   height:30px;
  }
- #fill{
-  /*width: 1170px;*/
+ 
+ #first{
 
+   display: inline-block;
+  width:320px;
+
+  
  }
-</style>
+ #first2{
+ display: inline-block;
+  width:422px;
+border-bottom: 2px dotted
+ }
+ #first3{
+ display: inline-block;
+  width:100px;
+ 
+ }
+ #first4{
+ display: inline-block;
+  width:276px;
+ border-bottom: 2px dotted
+ }
+ #second1{
+   display: inline-block;
+  width:130px;
+
+  
+ }
+  #second2{
+   display: inline-block;
+  width:365px;
+border-bottom: 2px dotted
+ }
+  #second3{
+   display: inline-block;
+  width:100px;
+ 
+ }
+  #second4{
+   display: inline-block;
+  width:530px;
+  border-bottom: 2px dotted
+ }
+ #third1{
+  display: inline-block;
+  width:30px;
+ 
+ }
+ #third2{
+  display: inline-block;
+  width:400px;
+  border-bottom: 2px dotted
+ }
+ #third3{
+  display: inline-block;
+  width:280px;
+ 
+ }
+ #third4{
+  display: inline-block;
+  width:408px;
+ border-bottom: 2px dotted
+ }
+ #fourth1{
+display: inline-block;
+  width:170px;
+  
+ }
+ #fourth2{
+display: inline-block;
+  width:508px;
+ border-bottom: 2px dotted
+  }
+  #fourth3{
+display: inline-block;
+  width:125px;
+
+  }
+  #fourth4{
+display: inline-block;
+  width:328px;
+border-bottom: 2px dotted
+  }
+ </style>
 <body>
 <center>
-	<div class="container-fluid" >
-	  <div style="">
+  <div class="container-fluid" >
+    <div style="">
       <div class="img">
-      <img src="img/logo.png" class="logo">
+      <img src="{{url('uploads/'.$i->image)}}" class="logo">
       </div>
       <div class="school">
-      <h1 id="schoolname">Delhi Academy of Medical Sciences Pvt. Ltd.</h1>
-      <h3 id="address">4B,3rd Floor Grover Chamber,Pusa Road,New Delhi-110005</h3>
-      <h4 id="phone" >Phone No.-011-4009 4009</h4>
+      <h1 id="schoolname">{{ $i->name }}</h1>
+      <h3 id="address">{{$i->address}}</h3>
+      <h4 id="phone" >Phone No. {{$i->contact}}</h4>
       </div>
       <div>
         <hr>
@@ -138,27 +224,50 @@ padding-left: 20px;
        </div>
        
        <div id="receiptdate">
-         <p  id="receipt"><b>Receipt No.:</b></p>
-         <p id="date"><b>Date:</b>8/7/18</p>
+         <p  id="receipt"><b>Receipt No.:</b>{{$e->recipt_no}}</p>
+         <p id="date"><b>Date:</b>{{$e->fee_date}}</p>
        </div>
-       <div id="receiptfilldata">
-       <div id="fill">
-         <p id="Received" style="float:left;margin-left:0px;"><i >Received with thanks from</i>...........................................Roll No.................................................</p>
-       </div>
-       <div>
-         <p id="Received" style="float: left;margin-top:-10px;"><i>Mobile No..................................................of</i>................................................................................</p>
-       </div>
-       <div>
-         <p id="Received" style="float: left;margin-top:-10px;"><i>by......................................Cheque/Pay Order No.</i>........................................................................</p>
-       </div>
-       <div>
-         <p id="Received" style="float: left;margin-top:-10px;"><i>on account of ......................................................................Franchise</i>.........................................</p>
-       </div>
-       </div>
-       <div id="card">
+       <table id="receiptfilldata">
+        <tr>
+          <td>
+            <div id="Received4">
+            <div id="first" ><i>Received with thanks from</i></div>
+            <div id="first2" > &nbsp;&nbsp;&nbsp;{{$e->student->student_name}}</div>
+            <div id="first3" >Roll No</div>
+            <div id="first4" >&nbsp;{{'201801'.$e->student->id}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="Received4">
+            <div id="second1" ><i>Mobile No</i></div>
+            <div id="second2" >&nbsp;{{$e->student->student_contact}}</div>
+            <div id="second3" >Son of</div>
+            <div id="second4" >&nbsp;{{$e->student->father_name  }}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="Received4">
+            <div id="third1" ><i>by</i></div>
+            <div id="third2" >&nbsp;{{$e->payment_mode}}</div>
+            <div id="third3" >Cheque/Pay Order No.</div>
+            <div id="third4" >&nbsp;{{$e->cheque_no}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="Received4">
+            <div id="fourth1" ><i>on account of</i></div>
+            <div id="fourth2" >&nbsp; </div>
+
+          </td>
+        </tr>      
+       </table>
+              <div id="card">
        <table  id="cardbox">
        <tr>
-         <td style="font-size: 32px;">1245632563</td>
+         <td style="font-size: 32px;">{{$e->amount}}</td>
        </tr>
        </table>
        </div>
@@ -170,11 +279,10 @@ padding-left: 20px;
        </div>
        <div style="margin-left:0px;margin-top:0px;">
         <hr>
-        <h2 style="margin-top: 0px;float:left;font-size: 32px;padding-left: 20px;">Testing - 18/10/2018</h2>
+        <h2 style="margin-top: 0px;float:left;font-size: 32px;padding-left: 20px;">Testing - {{$e->fee_date}}</h2>
        </div>
-        
     </div> 
   </div>
 </center>
 </body>
-</html>
+</html> 

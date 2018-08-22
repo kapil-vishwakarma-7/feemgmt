@@ -18,7 +18,6 @@
 
                 	<th class="info">Paid Amount</th>
                 	                	<th class="info">Due Amount</th>
-                      <th class="info">Print</th>
                   </tr>
                   @foreach($student->course->semesters as $e)
                    <tr>
@@ -30,9 +29,7 @@
                   	<td>{{
                         $student->studentfees->where('semester_id',$e->id)->sum('amount') - $student->fees->where('semester_id',$e->id)->sum('amount')
 
-                    }} </td>
-                  	
-                    <td><i class="fa fa-print"></i></td>
+                    }} </td>                  	
                    </tr>
                   @endforeach
                   
@@ -71,7 +68,7 @@
                     	<td>{{$e->amount}}</td>
                     	<td>{{$e->payment_mode}}</td>
                     	<td>{{$e->fee_date}}</td>
-                    	<td><i class="fa fa-print"></i></td>
+                    	<td><a target="__blank" href="{{url('feeslip?id='.$e->id)}}"><i class="fa fa-print"></i></a></td>
                     </tr>
                   @endforeach
                   
