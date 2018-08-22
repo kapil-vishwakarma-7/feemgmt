@@ -51,7 +51,9 @@
   </div>
 </div>
 @else
-
-  <label>No Matched Data Found</label>
+  <div class="row">
+    <center>    <label>No Matched Data Found</label>
+</center>
+  </div>
 @endif
  

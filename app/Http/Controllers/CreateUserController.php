@@ -96,7 +96,29 @@ class CreateUserController extends Controller
      */
     public function update(Request $request, CreateUser $createUser)
     {
-        //
+
+
+        $u =  User::find($request->id);
+        $u->name  = $request->fname.' '.$request->lname;
+        $u->email = $request->email;
+        $u->password = Hash::make($request->password);
+        $u->mobile = $request->mobile;
+
+        $u->designation = $request->designation;
+        $u->save();
+        $per = Permission::all();
+        foreach ($per as $e) {
+            $rname = "R".$e->id; 
+            $wname = "W".$e->id;
+            $up = UserPermission::where('user_id',$u->id)->where('permission_id',$e->permission_id)->get();
+            $up->user_id = $u->id;
+            $up->permission_id = $e->id;
+            $up->read  = $request->$rname;
+            $up->write = $request->$wname;
+            echo "$e->name >> ". $request->$rname.'  '.$request->$wname;
+            $up->save();
+        }
+
     }
 
     /**
