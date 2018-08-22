@@ -48,17 +48,16 @@
   </select>
   <br>
 </div>
-<div class="col-md-2">
+<div class="col-md-3">
   <label>Semester</label>
   <select class="form-control" id="semester" name="semester">
   </select>
   <br>
 </div>
-<div class="col-md-1">
-    <br>
+                <center>
 <button type="button"  class="btn btn-primary" id="search-btn">search</button>
-  
-</div>
+<button type="reset"  class="btn btn-primary" id="clear-btn">Clear</button>
+                    </center>
 </form>
 
 <br>
@@ -104,6 +103,9 @@
     }
   });
  });
+    $("#clear-btn").click(function(){
+        $("#result").empty();
+    });
 </script>
 @endsection
 
