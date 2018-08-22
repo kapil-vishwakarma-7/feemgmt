@@ -131,8 +131,8 @@
 					</div>
 				 
 
-				 @include('master_fees_table')
 					<!-- page end-->
+
 				</section>
 			</section>
 		<!-- Modal -->
@@ -263,6 +263,7 @@
 	function getFeeMasters(){
 		var id = $("#sel-course_id").val();
 		var year = $('#sel-course_year').val();
+
 		$("#add-course_id").val(id);
 		// alert(year);
 		$.ajax({
@@ -273,6 +274,8 @@
 				// alert('ScrollView');
 				console.log(data);
 				$("#tab-fee_masters").html(data);
+				var course=$("#add-course_id").val();
+		     	getSemester(course)
 			},
 			error:function(data){
 				alert("Cannot Get Fee Master");
