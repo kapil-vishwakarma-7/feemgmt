@@ -65,10 +65,8 @@
 </div>
 <br>
  <div id="result">
-   @include('master_fees_table')
  </div>
- 
-  </div> 
+</div> 
  </section>      
  
 </body>

@@ -42,11 +42,12 @@ class AdmissionController extends Controller
         $a=Admission::all();
         $years = AcademicYear::all();
         $c=Course::all(); 
+        $res = NULL;
+        // dd($res);
 
 
 
-
-        return view('admission_list',['res'=>NULL,'admissions'=>$a,'year'=>$years,'course'=>$c]);
+        return view('admission_list',['res'=>$res,'admissions'=>$a,'year'=>$years,'course'=>$c]);
  
     }
 
