@@ -29,9 +29,9 @@
                       <div class="col-md-12">
                         <div class="alert alert-info well-sm text-center"><h4>Student Details</h4></div>
                         <div class="col-md-4">
-                        <label class="control-label" for="courses1">Courses <span class="required">*</span></label>
+                        <label class="control-label" for="courses1">Course <span class="required">*</span></label>
                         <select   class="form-control round-input" name="course_id"  required>
-                          <option hidden selected disabled > courses</option>
+                          <option hidden selected disabled >Select Course</option>
                           @foreach($courses as $course)
                                                 <option value="{{$course->id}}">{{$course->name}}</option>
                                                 @endforeach
@@ -220,7 +220,7 @@
                           <br>
                           <br>
                           <button class="btn btn-primary" id="submit" type="button">Save</button>
-                          <button class="btn btn-default" type="button">Cancel</button>
+                          <button class="btn btn-default" type="reset">Cancel</button>
                         </div>
                       </div>
                     </form>

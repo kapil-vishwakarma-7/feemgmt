@@ -8,7 +8,7 @@
           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-files-o"></i> Institute Detail</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.php">Home</a></li>
+              <li><i class="fa fa-home"></i><a href="{{url('/')}}">Home</a></li>
               <li><i class="icon_document_alt"></i>Add/Update</li>
               <li><i class="fa fa-files-o"></i>Institute</li>
             </ol>
@@ -45,12 +45,12 @@
                       
                       <div class="col-md-6 ">
                     
-                        <label for="email" class="control-label">Email Address</label>
+                        <label for="email" class="control-label">Email Address <span class="required">*</span></label>
                         <input class="form-control round-input" id="email" name="email"  type="email" value="{{$institute->email}}" required />
                       </div>
                      <div class="col-md-6 ">
                     
-                        <label for="email" class="control-label">Registration No</label>
+                        <label for="email" class="control-label">Registration No<span class="required">*</span></label>
                         <input class="form-control round-input" id="registration_no" name="registration_no" value="{{$institute->registration_no}}" type="text" required />
                       </div>
                        <div class="col-md-10 ">
@@ -69,9 +69,8 @@
 
                     </div>
                     <div class="form-group">
-                      <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-primary" id="save" type="button">Save</button>
-                        <button class="btn btn-default" type="button">Cancel</button>
+                      <div class="col-lg-offset-3 col-lg-10">
+                        <button class="btn btn-primary" id="save" type="button">Save Changes</button>
                       </div>
                     </div>
                   </form>

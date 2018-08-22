@@ -49,6 +49,7 @@
 </section>
 </section>
   {{ $enquiries->links() }}
+  
 <script type="text/javascript">
   $(document).on('click','.pagination a',function(e){
     e.preventDefault();

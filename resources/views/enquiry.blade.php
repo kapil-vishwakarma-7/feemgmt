@@ -7,7 +7,7 @@
           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-files-o"></i> New Enquiry Form</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.php">Home</a></li>
+              <li><i class="fa fa-home"></i><a href="{{url('/')}}">Home</a></li>
               <li><i class="icon_document_alt"></i>Enquiry</li>
               <li><i class="fa fa-files-o"></i>Form</li>
             </ol>
@@ -63,7 +63,7 @@
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-primary" id="submit" type="button">Save</button>
-                        <button class="btn btn-default" type="button">Cancel</button>
+                        <button class="btn btn-default" type="reset">Reset</button>
                       </div>
                     </div>
                   </form>
@@ -91,12 +91,13 @@
         success: function(data){
             // alert('Enquiry Successfully.........');
             showMsg(1,"Enquiry Added");
+            $("#enquiry_form")[0].reset()
             console.log(data);
 
         },
         error: function(data){
             console.log(data);
-            if(data.status){
+            if(data.status == 403){
              showMsg(1,"Unauthorised User",1500);
              return;
             }

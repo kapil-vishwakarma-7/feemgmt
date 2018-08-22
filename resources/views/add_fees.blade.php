@@ -11,7 +11,7 @@
 							<h3 class="page-header"><i class="fa fa-files-o"></i> Add Fees</h3>
 							<ol class="breadcrumb">
 								<li><i class="fa fa-home"></i><a href="{{ url('/') }}">Home</a></li>
-								<li><i class="icon_document_alt"></i>Add</li>
+								
 								<li><i class="fa fa-files-o"></i>Fees</li>
 									<li class="pull-right">
 									<button  class="btn btn-success btn-sm" data-toggle="modal" data-target="#academicYearModal">New Academic Year</button>
@@ -212,29 +212,6 @@
 	</body>
 
 	<script type="text/javascript">		
-	$('#search-data').on('click',function(e){
-			// alert('asds');
-			e.preventDefault(e);
-					$.ajax({
-					type:"POST",
-					url:'/searchstudent',
-					data: $("#fees-form").serialize(),
-					processData: false,
-					dataType: 'json',
-					success: function(data){
-							alert('success');
-							console.log(data);
-							$("#result").html(data);
-					},
-					error: function(data){
-							alert("ERROR")
-							console.log(data);
-							// $("#result").html(data);
-							
-					}
-			})
-	});
-
 
 	$("#btn-add_course").on('click',function(){
 	
@@ -246,8 +223,8 @@
 			url:"{{url('feesmaster')}}",
 			data:$("#add-course").serialize(),
 			success: function(data){
-				alert("Fee Master Created");
-				getFeeMasters()
+                showMsg(1,"Fee Master Created",1500);
+				getFeeMasters();
 			},
 			error:function(data){
               if(data.status == 403){
@@ -271,7 +248,8 @@
 			url : "{{url('getfeemaster')}}",
 			data:{'id':id,'year':year},
 			success:function(data){
-				// alert('ScrollView');
+				
+
 				console.log(data);
 				$("#tab-fee_masters").html(data);
 				var course=$("#add-course_id").val();
@@ -293,7 +271,7 @@
 $(document).ready(function(){
  
 $('#update').on('click',function(e){
-    alert('asds');
+    
     var fee_type=$("#fee_typed").val();
     var fee_amount=$("#fee_amount").val();
     var semester=$("#semestered").val();
@@ -309,7 +287,9 @@ $('#update').on('click',function(e){
         data: {'fees_type':fee_type,'fee_amount':fee_amount,'semester':semester },
         dataType: 'json',
         success: function(data){
-             alert(data);
+    		$("#myModal").modal('hide');
+             showMsg(1,"Fee Updated Successfully",1500);
+
              getFeeMasters();
             console.log(data);
         },
@@ -375,19 +355,19 @@ function createAcademicYear(form){
         url:"{{url('createacademicyear')}}",
         data: form.serialize(),
         success: function(data){
-             alert(data);
+        	 $("#academicYearModal").modal('hide');
+             showMsg(1,"Academic Year Created",1500);
              getFeeMasters();
+   // refresh 2 div
              console.log(data);
         },
         error: function(data){
             console.log(data);
-
               if(data.status == 403){
                 showMsg(1,"Unauthorised User",1500);
                 return;
               }
                 showMsg(1,"Cannot Add Academic Year",1500);
-        
      }
     })
 }

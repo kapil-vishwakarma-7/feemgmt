@@ -12,4 +12,6 @@ class Fees extends Model
     public function student(){
     	return $this->belongsTo('App\Admission','student_id','id');
     }
+
+    
 }

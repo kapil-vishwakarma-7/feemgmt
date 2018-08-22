@@ -124,7 +124,7 @@
  <div class="col-lg-6">
             <!--Project Activity start-->
             <section class="panel">
-                 <div class="panel-heading">
+              <div class="panel-heading">
                 <h2><i class="fa fa-flag-o red"></i><strong>Statistics</strong></h2>
                 
               </div>
