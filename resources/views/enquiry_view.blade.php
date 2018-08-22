@@ -48,7 +48,9 @@
 </div>
 </section>
 </section>
+      <center>
   {{ $enquiries->links() }}
+          </center>
   
 <script type="text/javascript">
   $(document).on('click','.pagination a',function(e){
