@@ -49,9 +49,9 @@
           </tbody>
         </table>
   </div>
-</div>
-@else
-
-  <label>No Matched Data Found</label>
+    @else
+<h4 class="text-center">No Matched Data Found</h4>
+  <!--<label class="text-center">No Matched Data Found</label>-->
 @endif
  
+</div>

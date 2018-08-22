@@ -2205,7 +2205,7 @@ div[data-role="editor-toolbar"] {
 }
 .info-box:hover i{
     color: #ffffff;
-    border-bottom: 4px solid #ffffff;
+  
     background-color: #3377ec;
 }
 
