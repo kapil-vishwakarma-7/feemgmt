@@ -60,12 +60,12 @@
   
 </div>
 </form>
-<div class="col-md-8">
-  
-</div>
+
 <br>
  <div id="result">
+ 
  </div>
+
 </div> 
  </section>      
  
