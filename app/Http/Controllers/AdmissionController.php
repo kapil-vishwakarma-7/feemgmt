@@ -60,6 +60,7 @@ class AdmissionController extends Controller
     public function store(Request $request)
     {
 
+        dd($request);
         $a = new Admission();
         $a->student_name=$request->fullname;
         $a->email=$request->email;

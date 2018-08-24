@@ -29,7 +29,7 @@
 <div class="col-md-3">
   <label>Academic Year</label>
  <select class="form-control" name="year">
-   <option selected disabled hidden value="">Select Year</option>
+   <option selected disabled hidden value="">Select Semester</option>
    @foreach($year as $y)
     <option value="{{$y->year}}">{{$y->year}}</option>
     @endforeach
@@ -71,17 +71,17 @@
 </body>
 <script type="text/javascript">
  $("#courses").on('change',function(){
-    alert();
+  
    $.ajax({
     url:'/getsemesterlist?id='+$(this).val(),
     type:'get',
     success:function(data){
-      alert(data);
+      // alert(data);
       $("#semester").html(data);
       console.log(data);
     },
     error:function(data){
-      alert(data);
+  
       console.log(data);
     }
    });

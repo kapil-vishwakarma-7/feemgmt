@@ -30,13 +30,9 @@
                         <div class="alert alert-info well-sm text-center"><h4>Student Details</h4></div>
                         <div class="col-md-4">
                         <label class="control-label" for="courses1">Courses <span class="required">*</span></label>
-                        <select   class="form-control round-input" name="course_id"  required>
-                          <option hidden selected disabled > courses</option>
-                          
-                                                <option value="{{$student->course->id}}">{{$student->course->name}}</option>
-                                               
-                                            </select>
-                                          
+                        <select   class="form-control round-input" name="course_id"  required disabled>
+                             <option value="{{$student->course->id}}">{{$student->course->name}}</option>
+                        </select>
                                         </div>
                       <div class="col-md-4 ">
                       
@@ -57,10 +53,10 @@
                        <div class="col-md-4">
                         <label class="control-label" for="gender">Select Gender <span class="required">*</span></label>
                         <select class="form-control round-input" name="gender"   required>
-                          <option value="{{$student->gender}}"  hidden selected disabled >{{$student->gender}}</option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                                <option value="other">Others</option>
+                          <option value="{{$student->gender}}"  hidden selected  >{{$student->gender}}</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Other">Other</option>
                                                
                                             </select>
                                           
@@ -114,13 +110,14 @@
                       
                     
                         <label class="control-label" for="category">Category <span class="required">*</span></label>
-                        <select class="form-control round-input"  name="category" required>
-                          <option value="{{$student->category}}"  hidden selected disabled>{{$student->category}}</option>
-                                                <option value="gen">Gen</option>
-                                                <option value="sc/st">SC/ST</option>
-                                                <option value="obc">OBC</option>
-                                              
-                                            </select>
+                        <select id="sel-category" class="form-control round-input"   name="category" required>
+                            <option selected  hidden value="{{$student->category}}"> {{$student->category}}</option>
+
+                                               <option>Gen</option>
+                                                <option>SC/ST</option>
+                                                <option>OBC</option>
+                                               
+                        </select>
                                           
                                         </div>
                                         <div class="col-md-4">
@@ -128,7 +125,7 @@
                     
                         <label class="control-label" for="caste">Caste <span class="required">*</span></label>
                         <select class="form-control round-input" name="cast" required>
-                          <option value="{{$student->cast}}" hidden selected disabled  >{{$student->cast}}<option>
+                          <option value="{{$student->cast}}" hidden selected   >{{$student->cast}}<option>
                                                 <option>Hindu</option>
                                                 <option>Muslim</option>
                                                 <option>Sikh</option>
@@ -145,7 +142,7 @@
                     
                         <label class="control-label" for="medium">Medium <span class="required">*</span></label>
                         <select class="form-control round-input" name="medium" required>
-                          <option value="{{$student->medium}}"  hidden selected disabled>{{$student->medium}}</option>
+                          <option value="{{$student->medium}}"  hidden selected >{{$student->medium}}</option>
                                                 <option>Hindi</option>
                                                 <option>English</option>
                                               
@@ -322,7 +319,6 @@
   <script type="text/javascript">
     
   $('#submit').on('click',function(e){
-      alert('asds');
        $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -331,13 +327,13 @@
       e.preventDefault(e);
           $.ajax({
           type:"PUT",
-          url:'/admission/1',
+          url:"{{url('admission/'.$student->id)}}",
           data: new FormData($("#admission_form")[0]),
           processData: false,
           contentType: false,
           dataType: 'json',
           success: function(data){
-              alert('asd');
+              
               console.log(data);
 
           },
@@ -355,6 +351,6 @@
     <script type="text/javascript" src="{{ url('front/js/image.min.js') }}"></script>
 
 
-
+<input type="check" name="">
 
     @endsection

@@ -68,10 +68,9 @@
                         <label class="control-label" for="gender">Select Gender <span class="required">*</span></label>
                         <select class="form-control round-input" name="gender" required>
                           <option value=''  hidden selected disabled>Select ...</option>
-                                                <option>Male</option>
-                                                <option>Female</option>
-                                                <option>Others</option>
-                                               
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Other">Other</option>
                                             </select>
                                           
                                         </div>
