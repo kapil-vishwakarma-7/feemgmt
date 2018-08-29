@@ -11,7 +11,7 @@
 </div>
     </section>
   </section>-->
-     <div class="myfooter"><a href="">© 2018 Ultrasoftacademy</a> Developed by <a href="https://beangate.in/" target="_blank"><img src="http://localhost:8000/front/img/bg_icon.png" width="30px" height="35px"> <span>Beangate IT Solutions Pvt. Ltd.</span></a>
+     <div class="myfooter"><a href="">© 2018 Ultrasoftacademy</a> Developed by <a href="https://beangate.in/" target="_blank"><img src="{{url('/front/img/bg_icon.png')}}" width="30px" height="35px"> <span>Beangate IT Solutions Pvt. Ltd.</span></a>
   </footer>
   </section>
   <!-- container section end -->
