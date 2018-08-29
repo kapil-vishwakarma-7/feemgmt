@@ -1,6 +1,6 @@
 
  <!--main content end-->
- <footer>
+ <footer class="hidden-print">
  <section class="" id="main-content">
     <section class="wrapper">
     <div class="row">
@@ -14,6 +14,12 @@
   </footer>
   </section>
   <!-- container section end -->
-
+<script type="text/javascript">
+  $( document ).ready(function() {
+    var urlArray = window.location.pathname.split( '/' );
+    var pagAtual =urlArray[urlArray.length -1];
+    $("a[href*="+pagAtual+"]").css("color","#007aff");
+  });
+</script>
   <!-- custom form validation script for this page-->
   	

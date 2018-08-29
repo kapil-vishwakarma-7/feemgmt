@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Report;
 use Illuminate\Http\Request;
-
+use App\Fees;
 class ReportController extends Controller
 {
     /**
@@ -14,8 +14,8 @@ class ReportController extends Controller
      */
     public function index()
     {
-        // $r = Report::all();
-        return view('report');
+        $r = Fees::all();
+        return view('report',['rep'=>$r]);
     }
 
     /**

@@ -129,6 +129,8 @@ class FeesController extends Controller
         return view('fees_pay',['res'=>$res,'student'=>$u]);
     }
     public function feeSlip(Request $request){
-        return view('docs.feeslip');
+        $r = Fees::find(48);
+        return view('docs.feeslip',['e'=>$r]);
+
     }
 }
