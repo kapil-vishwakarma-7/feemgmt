@@ -19,7 +19,7 @@
                   Student List
                 </header>
                 <div class="panel-body">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <form class="form-validate form-horizontal" id="search-form" >
                    {{csrf_field()}}
               <label>Enrollment No</label>
@@ -29,7 +29,7 @@
 <div class="col-md-3">
   <label>Academic Year</label>
  <select class="form-control" name="year">
-   <option selected disabled hidden value="">Select Year</option>
+   <option selected disabled hidden value="">Select Semester</option>
    @foreach($year as $y)
     <option value="{{$y->year}}">{{$y->year}}</option>
     @endforeach
@@ -48,39 +48,40 @@
   </select>
   <br>
 </div>
-<div class="col-md-2">
+<div class="col-md-3">
   <label>Semester</label>
   <select class="form-control" id="semester" name="semester">
   </select>
   <br>
 </div>
+                <center>
 <button type="button"  class="btn btn-primary" id="search-btn">search</button>
+<button type="reset"  class="btn btn-primary" id="clear-btn">Clear</button>
+                    </center>
 </form>
-<div class="col-md-8">
-  
-</div>
+
 <br>
  <div id="result">
-   @include('master_fees_table');
- </div>
  
-  </div> 
+ </div>
+
+</div> 
  </section>      
  
 </body>
 <script type="text/javascript">
  $("#courses").on('change',function(){
-    alert();
+  
    $.ajax({
     url:'/getsemesterlist?id='+$(this).val(),
     type:'get',
     success:function(data){
-      alert(data);
+      // alert(data);
       $("#semester").html(data);
       console.log(data);
     },
     error:function(data){
-      alert(data);
+  
       console.log(data);
     }
    });
@@ -102,6 +103,9 @@
     }
   });
  });
+    $("#clear-btn").click(function(){
+        $("#result").empty();
+    });
 </script>
 @endsection
 

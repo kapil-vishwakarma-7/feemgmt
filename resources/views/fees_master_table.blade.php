@@ -58,7 +58,7 @@
 
   // delete button 
   $(".btn-delete").on('click',function(){
-    alert();
+
     var con = confirm("Do You Want To delete ?");
     if(con == false){
       return;
@@ -74,13 +74,21 @@
       url:'/feesmaster/'+$(this).data('id'),
       type:'DELETE',
       success: function(data){
-             alert("THANK U FOR DELETE !!!");
+              $("#myModal").modal('hide');
+             showMsg(1,"Fee Removed",1500);
+             getFeeMasters();
             console.log(data);
+
 
         },
        error: function(data){
             console.log(data);
-        
+            if(data.status == 403){
+             showMsg(1,"Unauthorise User",1500);
+             return;
+            }
+             showMsg(1,"Cannot Delete Fees",1500);
+
         }
     });
   })

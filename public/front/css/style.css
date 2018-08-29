@@ -9,6 +9,13 @@
     margin-bottom: 14px;
 }
 
+.myfooter{
+    background: #ffffff;
+    line-height: 50px;
+    border-top: 3px solid #3377ec;
+    text-align: center;
+   
+}
 .user-row:last-child {
     margin-bottom: 0;
 }
@@ -1079,7 +1086,7 @@ ul.sidebar-menu li.active a i {
 
     display: inline-block;
 
-    margin-top: 60px;
+    margin-top: 72px;
 
     padding: 15px;
 
@@ -2198,7 +2205,7 @@ div[data-role="editor-toolbar"] {
 }
 .info-box:hover i{
     color: #ffffff;
-    border-bottom: 4px solid #ffffff;
+  
     background-color: #3377ec;
 }
 

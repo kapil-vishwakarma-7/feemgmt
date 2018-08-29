@@ -10,7 +10,7 @@
               <h3 class="page-header"><i class="fa fa-files-o"></i> Student Details</h3>
               <ol class="breadcrumb">
                 <li><i class="fa fa-home"></i><a href="{{ url('/') }}">Home</a></li>
-                <li><i class="icon_document_alt"></i>student</li>
+                <li><i class="icon_document_alt"></i><a href="{{route('admission.create')}}">student</a></li>
                 <li><i class="fa fa-files-o"></i>detail</li>
               </ol>
             </div>

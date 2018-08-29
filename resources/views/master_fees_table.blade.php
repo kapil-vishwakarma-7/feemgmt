@@ -1,4 +1,4 @@
-@if(!is_null($res))
+@if(!is_null($res->first()))
 <div  id="result">
   <div class="col-md-12">
          <table class="table table-striped">
@@ -50,5 +50,11 @@
         </table>
   </div>
 </div>
+@else
+  <div class="row">
+    <center>    <label>No Matched Data Found</label>
+</center>
+  </div>
 @endif
  
+</div>

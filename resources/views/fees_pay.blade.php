@@ -9,7 +9,7 @@
 							<h3 class="page-header"><i class="fa fa-files-o"></i> Add Fees</h3>
 							<ol class="breadcrumb">
 								<li><i class="fa fa-home"></i><a href="{{ url('/') }}">Home</a></li>
-								<li><i class="icon_document_alt"></i>Add</li>
+								<li><i class="icon_document_alt" ></i><a href="{{route('admission.create')}}">Search Student</a></li>
 								<li><i class="fa fa-files-o"></i>Fees</li>	
 							</ol>
 						</div>
@@ -44,6 +44,7 @@
                         <th class="info" >Fees Due</th>
                         <th class="info" >Discount</th>
                         <th class="info">After Discount</th>
+                        <th class="info">Date</th>
                       </tr>
                      
                   

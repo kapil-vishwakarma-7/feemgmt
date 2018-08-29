@@ -42,11 +42,12 @@ class AdmissionController extends Controller
         $a=Admission::all();
         $years = AcademicYear::all();
         $c=Course::all(); 
+        $res = NULL;
+        // dd($res);
 
 
 
-
-        return view('admission_list',['res'=>NULL,'admissions'=>$a,'year'=>$years,'course'=>$c]);
+        return view('admission_list',['res'=>$res,'admissions'=>$a,'year'=>$years,'course'=>$c]);
  
     }
 
@@ -59,6 +60,7 @@ class AdmissionController extends Controller
     public function store(Request $request)
     {
 
+        dd($request);
         $a = new Admission();
         $a->student_name=$request->fullname;
         $a->email=$request->email;

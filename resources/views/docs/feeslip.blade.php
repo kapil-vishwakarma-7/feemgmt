@@ -122,6 +122,7 @@ padding-left: 20px;
  }
  
  #first{
+<<<<<<< HEAD
 
    display: inline-block;
   width:320px;
@@ -147,6 +148,33 @@ border-bottom: 2px dotted
    display: inline-block;
   width:130px;
 
+=======
+
+   display: inline-block;
+  width:320px;
+
+  
+ }
+ #first2{
+ display: inline-block;
+  width:422px;
+border-bottom: 2px dotted
+ }
+ #first3{
+ display: inline-block;
+  width:100px;
+ 
+ }
+ #first4{
+ display: inline-block;
+  width:276px;
+ border-bottom: 2px dotted
+ }
+ #second1{
+   display: inline-block;
+  width:130px;
+
+>>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
   
  }
   #second2{
@@ -156,18 +184,27 @@ border-bottom: 2px dotted
  }
   #second3{
    display: inline-block;
+<<<<<<< HEAD
   width:30px;
+=======
+  width:100px;
+>>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
  
  }
   #second4{
    display: inline-block;
+<<<<<<< HEAD
   width:600px;
+=======
+  width:530px;
+>>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
   border-bottom: 2px dotted
  }
  #third1{
   display: inline-block;
   width:30px;
  
+<<<<<<< HEAD
  }
  #third2{
   display: inline-block;
@@ -184,6 +221,24 @@ border-bottom: 2px dotted
   width:408px;
  border-bottom: 2px dotted
  }
+=======
+ }
+ #third2{
+  display: inline-block;
+  width:400px;
+  border-bottom: 2px dotted
+ }
+ #third3{
+  display: inline-block;
+  width:280px;
+ 
+ }
+ #third4{
+  display: inline-block;
+  width:408px;
+ border-bottom: 2px dotted
+ }
+>>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
  #fourth1{
 display: inline-block;
   width:170px;
@@ -210,12 +265,12 @@ border-bottom: 2px dotted
   <div class="container-fluid" >
     <div style="">
       <div class="img">
-      <img src="img/logo.png" class="logo">
+      <img src="{{url('uploads/'.$i->image)}}" class="logo">
       </div>
       <div class="school">
-      <h1 id="schoolname">Delhi Academy of Medical Sciences Pvt. Ltd.</h1>
-      <h3 id="address">4B,3rd Floor Grover Chamber,Pusa Road,New Delhi-110005</h3>
-      <h4 id="phone" >Phone No.-011-4009 4009</h4>
+      <h1 id="schoolname">{{ $i->name }}</h1>
+      <h3 id="address">{{$i->address}}</h3>
+      <h4 id="phone" >Phone No. {{$i->contact}}</h4>
       </div>
       <div>
         <hr>
@@ -225,50 +280,77 @@ border-bottom: 2px dotted
        
        <div id="receiptdate">
          <p  id="receipt"><b>Receipt No.:</b>{{$e->recipt_no}}</p>
+<<<<<<< HEAD
          <p id="date"><b>Date:</b>{{$e->fee_date->format('d-m-Y')}}</p>
+=======
+         <p id="date"><b>Date:</b>{{$e->fee_date}}</p>
+>>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
        </div>
        <table id="receiptfilldata">
         <tr>
           <td>
             <div id="Received4">
             <div id="first" ><i>Received with thanks from</i></div>
+<<<<<<< HEAD
             <div id="first2" > &nbsp;&nbsp;&nbsp;Shasank Vishwakarma</div>
             <div id="first3" >Roll No</div>
             <div id="first4" >&nbsp;0187cs151014</div>
+=======
+            <div id="first2" > &nbsp;&nbsp;&nbsp;{{$e->student->student_name}}</div>
+            <div id="first3" >Roll No</div>
+            <div id="first4" >&nbsp;{{'201801'.$e->student->id}}</div>
+>>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
           </td>
         </tr>
         <tr>
           <td>
             <div id="Received4">
             <div id="second1" ><i>Mobile No</i></div>
+<<<<<<< HEAD
             <div id="second2" >&nbsp;9931762370</div>
             <div id="second3" >of</div>
             <div id="second4" >&nbsp;Anjan Chaurasiya</div>
+=======
+            <div id="second2" >&nbsp;{{$e->student->student_contact}}</div>
+            <div id="second3" >Son of</div>
+            <div id="second4" >&nbsp;{{$e->student->father_name  }}</div>
+>>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
           </td>
         </tr>
         <tr>
           <td>
             <div id="Received4">
             <div id="third1" ><i>by</i></div>
+<<<<<<< HEAD
             <div id="third2" >&nbsp;Anjan Chaurasiya</div>
             <div id="third3" >Cheque/Pay Order No.</div>
             <div id="third4" >&nbsp;0124563</div>
+=======
+            <div id="third2" >&nbsp;{{$e->payment_mode}}</div>
+            <div id="third3" >Cheque/Pay Order No.</div>
+            <div id="third4" >&nbsp;{{$e->cheque_no}}</div>
+>>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
           </td>
         </tr>
         <tr>
           <td>
             <div id="Received4">
             <div id="fourth1" ><i>on account of</i></div>
+<<<<<<< HEAD
             <div id="fourth2" >&nbsp;33698174090</div>
             <div id="fourth3" >Franchise</div>
             <div id="fourth4" >&nbsp;bhopal</div>
+=======
+            <div id="fourth2" >&nbsp; </div>
+
+>>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
           </td>
         </tr>      
        </table>
               <div id="card">
        <table  id="cardbox">
        <tr>
-         <td style="font-size: 32px;">1245632563</td>
+         <td style="font-size: 32px;">{{$e->amount}}</td>
        </tr>
        </table>
        </div>
@@ -280,7 +362,7 @@ border-bottom: 2px dotted
        </div>
        <div style="margin-left:0px;margin-top:0px;">
         <hr>
-        <h2 style="margin-top: 0px;float:left;font-size: 32px;padding-left: 20px;">Testing - 18/10/2018</h2>
+        <h2 style="margin-top: 0px;float:left;font-size: 32px;padding-left: 20px;">Testing - {{$e->fee_date}}</h2>
        </div>
     </div> 
   </div>
