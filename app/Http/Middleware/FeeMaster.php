@@ -18,7 +18,7 @@ class FeeMaster
                 $per = \Auth::user()->permissions;
 
         $dec =  $per->search(function($value, $key) {
-           return ($value['permission_id']==17);
+           return (($value['permission_id']+1)==17);
         });
         if(!$dec){
                 return response()->json(array("Unauthorised"),403);

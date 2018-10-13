@@ -44,6 +44,9 @@ class User extends Authenticatable
     public function permissions(){
         return $this->hasMany('App\UserPermission','user_id','id')->select('permission_id');
     }
+    public function permission(){
+        return $this->hasMany('App\UserPermission','user_id','id');
+    }
 }
 
 

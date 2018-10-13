@@ -19,10 +19,10 @@ class Admission
         $per = \Auth::user()->permissions;
 
         $dec =  $per->search(function($value, $key) {
-           return ($value['permission_id']==16);
+           return (($value['permission_id']+1)==16);
         });
         if(!$dec){
-                return response()->json(array("Unauthorised"),403);
+                return response()->json(array("Unauthorise User"),403);
         }
 
         return $next($request);

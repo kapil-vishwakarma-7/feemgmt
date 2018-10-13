@@ -68,27 +68,36 @@ border: 1px solid green;
                                 <div id="feespaid" class="paymhide" style="display: none;">
                                   <div class="col-md-4">
                                     <label>Select Year</label>
-                                    <select class="form-control">
-                                      <option>BCA</option>
-                                      <option>BCA</option>
-                                      <option>BCA</option>
+                                    <select class="form-control" id="feespaid-year">
+                                        <option selected disabled hidden>Select Year</option>
+                                        @foreach($years as $e)
+                                          <option>{{$e->year}}</option>
+                                        @endforeach
                                     </select>
                                   </div>
                                   <div class="col-md-4">
                                     <label>Courses</label>
-                                    <select class="form-control">
-                                      <option>BCA</option>
-                                      <option>BCA</option>
-                                      <option>BCA</option>
+                                    <select class="form-control" class="course" id="feespaid-course">
+                                        <option selected disabled hidden>Select Course</option>
+                                        @foreach($courses as $e)
+                                          <option>{{$e->name}}</option>
+                                        @endforeach
                                     </select>
                                   </div>
                                   <div class="col-md-4">
                                     <label>Semester</label>
-                                    <select class="form-control">
-                                      <option>BCA</option>
-                                      <option>BCA</option>
-                                      <option>BCA</option>
+                                    <select class="form-control" id="feespaid-sem">
+
+                                        <option selected disabled hidden>Select Semester</option>
+                                        @foreach($years as $e)
+                                          <option>{{$e->year}}</option>
+                                        @endforeach
+
                                     </select>
+                                  </div>
+
+                                  <div class="col-md-4">
+                                          <button type="button" id="btn-feespaid">Search</button>
                                   </div>
                                  
                                 </div>
@@ -96,33 +105,36 @@ border: 1px solid green;
                                 <div id="feesdue" class="paymhide" style="display: none;">
                                   <div class="col-md-4">
                                     <label>Select Year</label>
-                                    <select class="form-control">
-                                      <option>BCA</option>
-                                      <option>BCA</option>
-                                      <option>BCA</option>
+                                    <select class="form-control" id="feesdue-year">
+                                      <option selected disabled hidden>Select Year</option>
+                                        @foreach($years as $e)
+                                          <option>{{$e->year}}</option>
+                                        @endforeach
                                     </select>
                                   </div>
                                   <div class="col-md-4">
                                     <label>Courses</label>
-                                    <select class="form-control">
-                                      <option>BCA</option>
-                                      <option>BCA</option>
-                                      <option>BCA</option>
+                                    <select class="form-control" id="feesdue-course">
+                                      <option selected disabled hidden>Select Course</option>
+                                        @foreach($courses as $e)
+                                          <option>{{$e->name}}</option>
+                                        @endforeach
                                     </select>
                                   </div>
                                   <div class="col-md-4">
                                     <label>Semester</label>
-                                    <select class="form-control">
-                                      <option>BCA</option>
-                                      <option>BCA</option>
-                                      <option>BCA</option>
+                                    <select class="form-control" id="feesdue-sem">
+                                        <option selected disabled hidden>Select Course</option>
+                                        @foreach($years as $e)
+                                          <option>{{$e->year}}</option>
+                                        @endforeach
                                     </select>
                                   </div>
 
                                   
                                   <div class="col-md-6 col-md-offset-3">
                                     <br>
-                                  <button type="button" class="btn btn-success">Search</button>
+                                  <button type="button" class="btn btn-success" id="btn-feesdue">Search</button>
                                   <button type="button" class="btn btn-success"><i class="fa fa-print"></i> Print</button>
                                   <button type="button" class="btn btn-success"><i class="fa fa-download"></i>In Excel</button>
                                 </div>
@@ -130,70 +142,29 @@ border: 1px solid green;
                                 <!-- payment received -->
                                 <div id="pmtreceived" class="paymhide" style="display: none;">
                                   <div class="row">
-                               <div class="col-md-4">
-                                <label>From*</label>
-                                 <input type="date" class="form-control" name="">
-                               </div>
-                               <div class="col-md-4">
-                                 <label>To*</label>
-                                 <input type="date" class="form-control" name="">
-                               </div><br>
-                                <div class="col-md-4">
-                                
-                                    <button type="button" class="btn btn-success"  onclick="window.print();"> <i class="fa fa-print"></i> Print</button>
-                                  <button type="button" class="btn btn-success"> <i class="fa fa-download"></i> Download In Excel</button>
-                                </div>
-                                  <br>
-                                </div>
+                                     <div class="col-md-4">
+                                      <label>From*</label>
+                                       <input id="payment-recive-from" type="date" class="form-control" name="">
+                                     </div>
+                                     <div class="col-md-4">
+                                       <label>To*</label>
+                                       <input type="date"  id="payment-recive-to" class="form-control" name="">
+                                     </div><br>
+                                      <div class="col-md-4">
+                                        <button type="button" class="btn btn-success" id="btn-payment-recive" >Search</button>
 
-                                  </div>
-                              <br>
-                             
+                                        <button type="button" class="btn btn-success"  onclick="window.print();"> <i class="fa fa-print"></i> Print</button>
+                                        <button type="button" class="btn btn-success"> <i class="fa fa-download"></i> Download In Excel</button>
+                                      </div>
+                                    <br>
                                 </div>
-                                                                <br><div class="table-responsive" id="pay" style="display: none;">
-       
-          <table class="table table-bordered" >
-            <thead>
-              <tr>
-                 <th style="background: #3377ec !important;">Receipt No</th>
-              <th style="background: #3377ec !important;">Name</th>
-              <th style="background: #3377ec !important;">Course</th>
-              <th style="background: #3377ec !important;">Amount</th>
-              <th style="background: #3377ec !important;">Payment Mode</th>
-              <th style="background: #3377ec !important;">Date</th>
-              </tr>
-             <tr>
-                <td style="background: white !important;"><input type="text" class="form-control myInput hidden-print" placeholder="Search" name=""></td>
-                <td  style="background: white !important; "><input type="text" class="form-control myInput hidden-print" placeholder="Search"   name=""></td>
-                <td style="background: white !important;">
-                  <select class="form-control myInput">
-                    <option value="BCA">BCA</option>
-                    <option>MBA</option>
-                  </select>
-                </td>
-                <td style="background: white !important;"><input type="text" class="form-control myInput hidden-print " name="" placeholder="Search" ></td>
-                <td style="background: white !important;"><select class="form-control myInput">
-                    <option value="BCA">BCA</option>
-                    <option>MBA</option>
-                  </select></td>
-                <td style="background: white !important;"><input type="text" class="form-control myInput hidden-print" name="" placeholder="Search" ></td>
-              </tr>
-            </thead>
-            <tbody id='myTable'>
-              
-        @foreach($rep as $e)
-              <tr >
-                <td>{{'US'.$e->recipt_no }}</td>
-                <td>{{ 'KAPIL VISHWAKARMA' }} </td>
-                <td>{{ 'BCA' }}</td>
-                <td>{{ $e->amount }}</td>
-                <td>{{ $e->payment_mode }}</td>
-                <td>{{ $e->fee_date }}</td>
-              </tr>
-        @endforeach
-            </tbody>
-          </table>
-       
+                               </div>
+                              <br>
+                             </div>
+                             <br>
+      <div class="table-responsive" id="pay">       
+        
+
         </div>
                               </div>
                           
@@ -212,41 +183,22 @@ border: 1px solid green;
                                
                                 <div class="col-md-4">
                                   <label>From*</label>
-                                  <input type="date" class="form-control" placeholder="Select Date" name="">
+                                  <input type="date" class="form-control" placeholder="Select Date" name="enq_from" id="enq_from">
                                 </div>
                                 <div class="col-md-4">
                                   <label>To*</label>
-                                  <input type="date" placeholder="Select Date" name="" class="form-control">
+                                  <input type="date" placeholder="Select Date" name="" class="form-control" id="enq_to" name="enq_to">
                                 </div>
                                 <div class="col-md-4">
                                   <br>
-                                  <button type="button" class="btn btn-success">Search</button>
+                                  <button type="button" class="btn btn-success" id="btn-enq-search">Search</button>
                                   <button type="button" class="btn btn-success"><i class="fa fa-print"></i> Print</button>
                                   <button type="button" class="btn btn-success"><i class="fa fa-download"></i>In Excel</button>
-
                                 </div>
-
                                 </div>
                                 <br>
-                                <div class="table-responsive">
-                                   <br>
-                                  <table class="table table-bordered">
-                                    <thead>
-                                      <tr>
-                                         <th>#</th>
-                                         <th>Name</th>
-                                         <th>Email</th>
-                                         <th>Contact</th>
-                                         <th>Course</th>
-                                         <th>Address</th>
-                                      </tr>
-                                    </thead>
-                                   <tbody>
-                                     <tr>
-                                       <td></td>
-                                     </tr>
-                                   </tbody>
-                                  </table>
+                                <div class="table-responsive" id="enq_content">
+
                                 </div>
                               </div>
                               
@@ -255,51 +207,57 @@ border: 1px solid green;
                               </div>
                               <!-- student start -->
                               <div class="col-md-12 report-sub" id="student" style="display: none;">
-                                          <section class="panel">
+                                         <section class="panel">
+                                              <header class="panel-heading">
+                                                Student Detail
+                                              </header>
+                                              <div class="panel-body">
+                                              <div class="row">
                                 <div class="col-md-3">
-                                  <label>Select*</label>
-                                  <select class="form-control">
-                                    <option>---</option>
-                                    <option>Accounts </option>
-                                    <option>Enquiry </option>
-                                    <option>Student Details </option>
-                                    
+                                  <label>Select year</label>
+                                  <select class="form-control" id="sd-year">
+                                      <option selected disabled hidden>Select Year</option>
+                                        @foreach($years as $e)
+                                          <option>{{$e->year}}</option>
+                                        @endforeach
                                   </select>
                                 </div>
                                 <div class="col-md-3">
-                                  <label>Select Fees*</label>
-                                  <select class="form-control">
-                                    <option>---</option>
-                                    <option>Payment Received</option>
-                                    <option>Fees Paid </option>
-                                    <option>Fees Due </option>
-                                    
-                                    
+                                  <label>Select course</label>
+                                  <select class="form-control" id="sd-course"> 
+                                    <option selected disabled hidden>Select Course</option>
+                                        @foreach($courses as $e)
+                                          <option value="{{$e->id}}">{{$e->name}}</option>
+                                        @endforeach
                                   </select>
                                 </div>
                                 <div class="col-md-3">
-                                  <label>Select*</label>
-                                  <select class="form-control">
-                                    <option>---</option>
-                                    <option>Fees Pay </option>
-                                    <option>Fees Due </option>
-                                    
-                                    
+                                  <label>Select semester*</label>
+                                  <select class="form-control" id="sd-semester">
+                                    <option selected disabled hidden>Select Semester</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
                                   </select>
                                 </div>
                                 <div class="col-md-3">
-                                  <label>Select*</label>
-                                  <select class="form-control">
-                                    <option>---</option>
-                                    <option>Fees Pay </option>
-                                    <option>Fees Due </option>
-                                    
-                                    
-                                  </select>
+                                <br>
+                                  <button id="btn-student-details" type="button" class="btn btn-success">Search</button >
+                                </div>
+                                </div>
+                                <br>
+                                <div class="row" id="student-details-report">
+                                  
                                 </div>
                               </div>
                               
                             </div>
+                                      
                               </section>
                               </div>
                       
@@ -349,6 +307,118 @@ $(document).ready(function(){
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
+
+// get enq 
+$("#btn-enq-search").click(function(){
+  var from  = $("#enq_from").val();  
+  var to  = $("#enq_to").val();  
+  $.ajax({
+    url:"{{url('/getenquiry')}}",
+    type:'GET',
+    data:{'from':from,'to':to},
+    success:function(data){
+      $("#enq_content").html(data)
+      console.log(data);
+    },
+    error:function(data){
+      console.log(data);
+    }
+  });
+
 });
+//payment report
+$("#btn-payment-recive").click(function(){
+    var from  = $("#payment-recive-from").val();  
+    var to  = $("#payment-recive-to").val();  
+    $.ajax({
+      url:"{{url('/getpaymentrecived')}}",
+      type:'GET',
+      data:{'from':from,'to':to},
+      success:function(data){
+        $("#pay").html(data)
+        console.log(data);
+      },
+      error:function(data){
+        console.log(data);
+      }
+    });    
+});
+
+});
+
+
+function getSemester(course){
+    // alert(course);
+    $.ajax({
+          type:"get",
+          url:"{{url('getsemester')}}",
+          data:{'id' : course},
+          success: function(data){
+               // alert(data);
+               // $('#semester').html(data);
+               $('.semester').html(data);
+               // alert('success');
+              console.log(data);
+          },
+          error: function(data){
+              alert("error")
+              console.log(data); 
+          }
+      });
+  }
+
+$(".course").on('change',function(){
+  var course = $(this).val();
+  getSemester(course);
+});
+
+$("#btn-feespaid").click(function(){
+  $.ajax({
+          type:"get",
+          url:"{{url('/feespaidreport')}}",
+          data:{'year':$("#feespaid-year").val(),'course':$("#feespaid-course").val(),'semester':$("#feespaid-sem").val()},
+          success: function(data){
+            $("#pay").html(data)
+              console.log(data);
+          },
+          error: function(data){
+              alert("error")
+              console.log(data); 
+          }
+      });
+})
+$("#btn-feesdue").click(function(){
+  $.ajax({
+          type:"get",
+          url:"{{url('/feesduereport')}}",
+          data:{'year':$("#feesdue-year").val(),'course':$("#feesdue-course").val(),'semester':$("#feesdue-sem").val()},
+          success: function(data){
+            $("#pay").html(data)
+
+              console.log(data);
+          },
+          error: function(data){
+              alert("error")
+              console.log(data); 
+          }
+      });
+})
+
+$("#btn-student-details").click(function(){
+    $.ajax({
+          type:"get",
+          url:"{{url('/studentdetails')}}",
+          data:{'year':$("#sd-year").val(),'course':$("#sd-course").val(),'semester':$("#sd-semester").val()},
+          success: function(data){
+            $("#student-details-report").html(data)
+              console.log(data);
+          },
+          error: function(data){
+              alert("error")
+              console.log(data); 
+          }
+      });
+})
 </script>
+
 @stop    

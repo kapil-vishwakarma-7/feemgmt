@@ -280,70 +280,50 @@ border-bottom: 2px dotted
        
        <div id="receiptdate">
          <p  id="receipt"><b>Receipt No.:</b>{{$e->recipt_no}}</p>
-<<<<<<< HEAD
-         <p id="date"><b>Date:</b>{{$e->fee_date->format('d-m-Y')}}</p>
-=======
+
          <p id="date"><b>Date:</b>{{$e->fee_date}}</p>
->>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
        </div>
        <table id="receiptfilldata">
         <tr>
           <td>
             <div id="Received4">
             <div id="first" ><i>Received with thanks from</i></div>
-<<<<<<< HEAD
+
             <div id="first2" > &nbsp;&nbsp;&nbsp;Shasank Vishwakarma</div>
             <div id="first3" >Roll No</div>
             <div id="first4" >&nbsp;0187cs151014</div>
-=======
-            <div id="first2" > &nbsp;&nbsp;&nbsp;{{$e->student->student_name}}</div>
-            <div id="first3" >Roll No</div>
-            <div id="first4" >&nbsp;{{'201801'.$e->student->id}}</div>
->>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
           </td>
         </tr>
         <tr>
           <td>
             <div id="Received4">
             <div id="second1" ><i>Mobile No</i></div>
-<<<<<<< HEAD
+
             <div id="second2" >&nbsp;9931762370</div>
             <div id="second3" >of</div>
             <div id="second4" >&nbsp;Anjan Chaurasiya</div>
-=======
-            <div id="second2" >&nbsp;{{$e->student->student_contact}}</div>
-            <div id="second3" >Son of</div>
-            <div id="second4" >&nbsp;{{$e->student->father_name  }}</div>
->>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
           </td>
         </tr>
         <tr>
           <td>
             <div id="Received4">
             <div id="third1" ><i>by</i></div>
-<<<<<<< HEAD
+
             <div id="third2" >&nbsp;Anjan Chaurasiya</div>
             <div id="third3" >Cheque/Pay Order No.</div>
             <div id="third4" >&nbsp;0124563</div>
-=======
-            <div id="third2" >&nbsp;{{$e->payment_mode}}</div>
-            <div id="third3" >Cheque/Pay Order No.</div>
-            <div id="third4" >&nbsp;{{$e->cheque_no}}</div>
->>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
+
           </td>
         </tr>
         <tr>
           <td>
             <div id="Received4">
             <div id="fourth1" ><i>on account of</i></div>
-<<<<<<< HEAD
+
             <div id="fourth2" >&nbsp;33698174090</div>
             <div id="fourth3" >Franchise</div>
             <div id="fourth4" >&nbsp;bhopal</div>
-=======
             <div id="fourth2" >&nbsp; </div>
-
->>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699
           </td>
         </tr>      
        </table>

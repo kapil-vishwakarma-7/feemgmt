@@ -1,9 +1,6 @@
 
  <!--main content end-->
-<<<<<<< HEAD
- <footer class="hidden-print">
- <section class="" id="main-content">
-=======
+
  <footer>
  <!--<section class="" id="main-content">
 >>>>>>> 0ea9d8b5b34fc62346e9614c2ef0c157b0040699

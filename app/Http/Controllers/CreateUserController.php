@@ -96,7 +96,7 @@ class CreateUserController extends Controller
      */
     public function update(Request $request, CreateUser $createUser)
     {
-
+        // dd($request);
 
         $u =  User::find($request->id);
         $u->name  = $request->fname.' '.$request->lname;
@@ -129,6 +129,14 @@ class CreateUserController extends Controller
      */
     public function destroy(CreateUser $createUser)
     {
-        //
+        // $createuser->delete();
+    }
+
+    public function getUserDetails(Request $request){
+        $u = User::find($request->id);
+        return view('updateusermodal',['user'=>$u]);
+    }
+    public function updateUser($id, Request $request){
+        User::destroy($id);   
     }
 }

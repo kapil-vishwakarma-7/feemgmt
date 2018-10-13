@@ -333,15 +333,20 @@ span.round-tab:hover {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>gfdgf</td>
-						<td>gfdgf</td>
-						<td>gfdgf</td>
-						<td>gfdgf</td>
-						<td>gfdgf</td>
-						<td class="text-center"><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal1"><i class="fa fa-edit "></i></button> &nbsp; <button type="button" class="btn btn-default btn-xs" > <i class="fa fa-times-circle text-danger" ></i></button></td>
-						
-					</tr>
+					@foreach($users as $u)
+                        <tr>
+    						<td>{{$u->id }}</td>
+    						<td>{{$u->name}}</td>
+    						<td>{{$u->mobile}}</td>
+    						<td>{{$u->email}}</td>
+    						<td>{{$u->designation}}</td>
+
+    						<td class="text-center">
+                            <button type="button" class="user-edit-btn" data-user-id="{{$u->id}}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal1"><i class="fa fa-edit "></i></button> &nbsp; 
+
+                            <button type="button" class="btn-delete-user" data-id="{{$u->id}}" class="btn btn-default btn-xs" > <i class="fa fa-times-circle text-danger" ></i></button></td>
+    					</tr>
+                    @endforeach
 				</tbody>
 			</table>
 		</div>
@@ -350,10 +355,9 @@ span.round-tab:hover {
 
 	 
 					 <!-- update user and permission -->
-                        <div class="modal fade" id="myModal1" role="dialog">
+<div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        
+      <div class="modal-content">        
         <div class="modal-body">
           <div class="">
 			<section class="panel">
@@ -367,7 +371,7 @@ span.round-tab:hover {
                 <ul class="nav nav-tabs" role="tablist">
 
                     <li role="presentation" class="active">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                        <a href="#step-1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                             <span class="round-tab">
                                 <i class="fa fa-user"></i>
                             </span>
@@ -375,120 +379,20 @@ span.round-tab:hover {
                     </li>
 
                     <li role="presentation" class="disabled">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                        <a href="#step-2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
                             <span class="round-tab">
                                 <i class="fa fa-cog"></i>
                             </span>
                         </a>
                     </li>
-                    <li role="presentation" class="disabled">
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
-                            <span class="round-tab">
-                                <i class="fa fa-check"></i>
-                            </span>
-                        </a>
-                    </li>
+
 
                    
                 </ul>
             </div>
+            <div id="updateuserform">
 
-            <form id="form-create-user" accept="{{route('createuser.store')}}" method="POST" role="form">
-                {{csrf_field()}}
-                <div class="tab-content">
-                    <div class="tab-pane active" role="tabpanel" id="step1">
-
-                        <div class="table-responsive">
-
-                        <table class="table table-bordered">
-                        	<thead>
-                        		<tr>
-                        			<th>First Name</th>
-                        			<th>Last Name</th>
-                        			<th>Designation</th>
-                        		</tr>
-                        	</thead>
-                        	<tbody>
-                        		<tr>
-                        			<td><input type="text" class="form-control" name="fname"></td>
-                        			<td><input type="text" class="form-control" name="lname"></td>
-                        			<td><input type="text" class="form-control" name="designation"></td>
-                        		</tr>
-                        	</tbody>
-                        </table>
-                        	<br>
-                       <center><button type="button"  class="btn btn-primary next-step">Save and continue</button></center>
-                         
-                    </div>
-                </div>
-                    <div class="tab-pane" role="tabpanel" id="step2">
-                        
-			                       
-			                       <div class="table-responsive">
-			                       	
-                                   <table class="table table-striped table-bordered">
-							    <thead>
-							      <tr>
-							        <th width="50%" class="text-center">Permission</th>
-							        <th width="25%" class="text-center">Read</th>
-							        <th width="25%" class="text-center">Write</th>
-							      </tr>
-							    </thead>
-							    <tbody>
-							   @foreach($permissions as $e)
-							      <tr>
-							        <td>{{$e->name}}</td>
-							        <td >
-                                        <center>
-                                            <input type="checkbox" data-id="R{{$e->id}}" class="pcheck" id="R{{$e->id}}" name="R{{$e->id}}" value="1">
-                                            <input type="hidden" id="HR{{$e->id}}" name="R{{$e->id}}" value="0">
-                                        </center>
-                                    </td>
-							        <td>
-                                        <center>
-                                            <input type="checkbox" class="pcheck" id="W{{$e->id}}" data-id="W{{$e->id}}"  name="W{{$e->id}}" value="1">
-                                            <input type="hidden" id="HW{{$e->id}}" name="W{{$e->id}}" value="0">
-                                        </center>
-                                    </td>
-							      </tr>
-							   @endforeach
-							    </tbody>
-							  </table>
-
-			                       </div>
-
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="tab-pane" role="tabpanel" id="step3">
-                        <div class="table-responsive">
-                        <table class="table table-bordered">
-                        	<thead>
-                        		<tr>
-                        			<th>Password</th>
-                        			<th>Re-Enter password</th>
-                        			<th>Email</th>
-                        		</tr>
-                        	</thead>
-                        	<tbody>
-                        		<tr>
-                        			<td><input type="password" class="form-control" name="password"></td>
-                        			<td><input type="password" class="form-control" name="re-password"></td>
-                        			<td><input type="email" class="form-control" name="email"></td>
-                        		</tr>
-                        	</tbody>
-                        </table>
-                        	<br>
-                       <center><button type="button" id="btn-create-user" class="btn btn-primary next-step">Save and continue</button></center>
-                         
-                    </div> 
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
    </div>
@@ -572,6 +476,54 @@ $("#btn-create-user").click(function(){
      }
     })
 });
+
+function getUserDetails(user_id){
+    $.ajax({
+      type:"GET",
+        url:"{{url('getuserdetails')}}",
+        data: {id:user_id},
+        success: function(data){
+            $("#updateuserform").html(data)
+        },
+        error: function(data){
+            console.log(data);
+              if(data.status == 403){
+                showMsg(1,"Unauthorised User",1500);
+                return;
+              }
+            showMsg(1,"Cannot Create User",1500);
+        }  
+    })
+}
+$(".user-edit-btn").on('click',function(){
+    var user_id = $(this).data('user-id')
+     getUserDetails(user_id)
+});
+
+    $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    }); 
+$(".btn-delete-user").click(function(){
+    var id = $(this).data("id")
+    alert(id)
+    $.ajax({
+      type:"GET",
+        url:"{{url('updateuser')}}"+"/"+id,
+        success: function(data){
+            showMsg(1,"User Deleted",1500);
+        },
+        error: function(data){
+            console.log(data);
+              if(data.status == 403){
+                showMsg(1,"Unauthorised User",1500);
+                return;
+              }
+            showMsg(1,"Cannot Create User",1500);
+        }  
+    })
+})
 
 </script>
     

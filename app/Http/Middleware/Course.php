@@ -18,7 +18,7 @@ class Course
         $per = \Auth::user()->permissions;
 
         $dec =  $per->search(function($value, $key) {
-           return ($value['permission_id']==14);
+           return (($value['permission_id']+1)==14);
         });
         if(!$dec){
                 return response()->json(array("Unauthorised"),403);

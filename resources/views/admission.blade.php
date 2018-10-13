@@ -127,7 +127,7 @@
                           <label for="ccomment" class="control-label">Permanent Address <span class="required">*</span></label>
                           <textarea class="form-control round-input " id="ccomment" name="permanent_add" required></textarea>
                       </div>
-   <div class="col-md-6 ">
+                      <div class="col-md-6 ">
                         
                       
                           <label for="ccomment" class="control-label">Current Address <span class="required">-</span></label>
@@ -195,7 +195,7 @@
       </div>
         <div class="col-md-2">
                         <label class="control-label" for="medium">Medium <span class="required">*</span></label>
-                        <select   class="form-control round-input" name="course_id"  required>
+                        <select   class="form-control round-input" name="medium"  required>
                           <option hidden selected disabled >Select medium</option>
                          
                                                 <option value="hindi">Hindi</option>
@@ -396,7 +396,7 @@
           error: function(data){
               console.log(data);
               if(data.status == 403){
-                showMsg(1,"Unauthorised User",1500);
+                showMsg(1,data,1500);
                     return;
                 }
                 showMsg(1,"Admission Failed",1500);
