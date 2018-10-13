@@ -124,7 +124,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type=text],input[type=password] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -289,7 +289,7 @@ input[type=text]:placeholder {
     @csrf
       <input type="text" id="login" class="fadeIn second"  placeholder="login" name="email" value="{{ old('email') }}" required autofocus>
 
-      <input type="text"  id="password" class="fadeIn third" name="password"  placeholder="password"><br>
+      <input type="password"  id="password" class="fadeIn third" name="password"  placeholder="password"><br>
       <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}<br>
  
       <input type="submit" class="fadeIn fourth" value="Log In">

@@ -128,7 +128,7 @@
   <!-- container section start -->
   <section id="container" class="">
     <!--header start-->
-    <header class="header dark-bg">
+    <header class="header dark-bg hidden-print">
       <div class="toggle-nav">
         <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
       </div>
@@ -380,7 +380,7 @@
     <!--header end-->
 
     <!--sidebar start-->
-    <aside>
+    <aside class="hidden-print">
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
@@ -466,7 +466,7 @@
 
 
           <li >
-            <a href="{{ route('createuser.index') }}" class="">
+            <a href="{{ route('report.index') }}" class="">
                           <i class="fa fa-user"></i>
                           <span>Reports</span>
 

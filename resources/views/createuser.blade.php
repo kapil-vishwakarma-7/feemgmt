@@ -160,7 +160,17 @@ span.round-tab:hover {
         </div>
         
         	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+        		<div class="col-md-12">
+        		<button type="button" class="btn btn-info btn-md  pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Create User</button>
+
+				</div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+          <div class="">
 			<section class="panel">
                 <header class="panel-heading">
                   User creation
@@ -202,7 +212,9 @@ span.round-tab:hover {
                 {{csrf_field()}}
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
+
                         <div class="table-responsive">
+
                         <table class="table table-bordered">
                         	<thead>
                         		<tr>
@@ -295,8 +307,105 @@ span.round-tab:hover {
         </div>
     </div>
    </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	</div class="row">
+	<div class="">
+		<br>
+		<div class="table-responsive">
+			<table class=" table table-bordered">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Contact</th>
+						<th>Email</th>
+						<th>Designation</th>
+						
+						<th>Action</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					@foreach($users as $u)
+                        <tr>
+    						<td>{{$u->id }}</td>
+    						<td>{{$u->name}}</td>
+    						<td>{{$u->mobile}}</td>
+    						<td>{{$u->email}}</td>
+    						<td>{{$u->designation}}</td>
+
+    						<td class="text-center">
+                            <button type="button" class="user-edit-btn" data-user-id="{{$u->id}}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal1"><i class="fa fa-edit "></i></button> &nbsp; 
+
+                            <button type="button" class="btn-delete-user" data-id="{{$u->id}}" class="btn btn-default btn-xs" > <i class="fa fa-times-circle text-danger" ></i></button></td>
+    					</tr>
+                    @endforeach
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div>
+
+	 
+					 <!-- update user and permission -->
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">        
+        <div class="modal-body">
+          <div class="">
+			<section class="panel">
+                <header class="panel-heading">
+                  Update User & Permission
+                </header>
+                <div class="panel-body">
+        <div class="wizard">
+            <div class="wizard-inner">
+                <div class="connecting-line"></div>
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li role="presentation" class="active">
+                        <a href="#step-1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="disabled">
+                        <a href="#step-2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <i class="fa fa-cog"></i>
+                            </span>
+                        </a>
+                    </li>
+
+
+                   
+                </ul>
+            </div>
+            <div id="updateuserform">
+
+            </div>
+        </div>
+    </div>
+   </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+					 <!-- end -->
+	</div>	
      </section>
- </div>
    
     </section>
 </section>
@@ -367,6 +476,54 @@ $("#btn-create-user").click(function(){
      }
     })
 });
+
+function getUserDetails(user_id){
+    $.ajax({
+      type:"GET",
+        url:"{{url('getuserdetails')}}",
+        data: {id:user_id},
+        success: function(data){
+            $("#updateuserform").html(data)
+        },
+        error: function(data){
+            console.log(data);
+              if(data.status == 403){
+                showMsg(1,"Unauthorised User",1500);
+                return;
+              }
+            showMsg(1,"Cannot Create User",1500);
+        }  
+    })
+}
+$(".user-edit-btn").on('click',function(){
+    var user_id = $(this).data('user-id')
+     getUserDetails(user_id)
+});
+
+    $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    }); 
+$(".btn-delete-user").click(function(){
+    var id = $(this).data("id")
+    alert(id)
+    $.ajax({
+      type:"GET",
+        url:"{{url('updateuser')}}"+"/"+id,
+        success: function(data){
+            showMsg(1,"User Deleted",1500);
+        },
+        error: function(data){
+            console.log(data);
+              if(data.status == 403){
+                showMsg(1,"Unauthorised User",1500);
+                return;
+              }
+            showMsg(1,"Cannot Create User",1500);
+        }  
+    })
+})
 
 </script>
     

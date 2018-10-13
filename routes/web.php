@@ -58,3 +58,20 @@ Route::get('error',function(){
 Route::get("chc","HomeController@chc")->middleware('account_read')->name("kpi");
 Route::get('feeslip','FeesController@feeSlip');
 Route::get('admissionform','AdmissionController@admissionForm');
+
+
+// report
+Route::get('/getenquiry','ReportController@getEnquiry');
+Route::get('/getpaymentrecived','ReportController@getPaymentRecived');
+Route::get('/feespaidreport','ReportController@feesPaidReport');
+Route::get('/feesduereport','ReportController@feesDueReport');
+Route::get('/studentdetails','ReportController@studentDetails');
+
+Route::get('/getuserdetails','CreateUserController@getUserDetails');
+
+Route::get('updateusermodal',function(){
+	$per = \App\Permission::all();
+	$user = \App\User::find(1);
+	return view('updateusermodal',['permissions'=>$per,'user'=>$user]);
+});
+Route::get('updateuser/{ID}','CreateUserController@updateUser')->name('updateuser');

@@ -21,7 +21,7 @@ class account_read
         $per = Auth::user()->permissions;
 
         $dec =  $per->search(function($value, $key) {
-           return ($value['permission_id']==13);
+           return (($value['permission_id']+1)==13);
         });
         if(!$dec){
                 return response()->json("Unauthorised",403);

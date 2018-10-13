@@ -103,7 +103,7 @@
             }
              showMsg(1,"Enquiry Not Created",1500);
         }
-    })
+      })
     });
 
 </script>

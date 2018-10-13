@@ -15,6 +15,7 @@
            <?php $i=1;?>
 
            <input type="hidden" name="admission_id" value="{{$admission_id}}" id="admission-id">
+           {{$test}}
            @foreach($sem as $s)
            <input type="hidden" value="{{$s->semester_id}}" name="semester[]">
            <div class="row"> 

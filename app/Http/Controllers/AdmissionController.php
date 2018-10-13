@@ -60,7 +60,7 @@ class AdmissionController extends Controller
     public function store(Request $request)
     {
 
-        dd($request);
+        // dd($request);
         $a = new Admission();
         $a->student_name=$request->fullname;
         $a->email=$request->email;
@@ -97,14 +97,14 @@ class AdmissionController extends Controller
         $a->image_adhar=$img_adhar->getClientOriginalName();
         $a->save();
         $msg="Admission succesfully....";
-
+        $test=$request->course_id;
 
 
         $ab = FeesMaster::where('course_id',$request->course_id)->where('ac_year',$a->admission_year)->select('semester_id', DB::raw('SUM(amount) as amount'))->groupBy('semester_id')->orderBy('semester_id')->get();
         
-        return view('student_fee_content',['sem'=>$ab,'admission_id'=>$a->id]);
+        return view('student_fee_content',['sem'=>$ab,'admission_id'=>$a->id,'test'=>$test]);
         
-        return response()->json($msg);
+        // return response()->json($msg);
  
     }
 
